@@ -78,12 +78,26 @@ describe StrokeCounter::Keyboard do
       expect(feedback.keys).to include(:hand)
     end
 
+    it 'should contain :finger key' do
+      expect(feedback.keys).to include(:finger)
+    end
+
     describe 'hand key' do
       context 'when :a given' do
         let(:key) { :a }
         let(:hand) { feedback[:hand] }
         it 'should be done by left hand' do
           expect(hand).to be :left
+        end
+      end
+    end
+
+    describe 'finger key' do
+      context 'when :a given' do
+        let(:key) { :a }
+        let(:finger) { feedback[:finger] }
+        it 'should be :little' do
+          expect(finger).to be :little
         end
       end
     end
