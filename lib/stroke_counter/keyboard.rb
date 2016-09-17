@@ -24,5 +24,9 @@ module StrokeCounter
           return false
       end
     end
+
+    def type_feedback(key)
+      { hand: :right }
+    end
   end
 end
