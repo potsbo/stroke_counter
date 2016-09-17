@@ -1,14 +1,13 @@
+require 'active_support'
+require 'active_support/core_ext/object/blank'
+
 module StrokeCounter
   class Keyboard
     DEFAULT = :qwerty
 
     attr_reader :name
     def initialize(args = {} )
-      @name = if args[:name].nil? || args[:name].empty?
-                DEFAULT
-              else
-                args[:name].downcase.to_sym
-              end
+      @name = ( args[:name].presence || DEFAULT ).downcase.to_sym
     end
   end
 end
