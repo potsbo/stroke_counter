@@ -26,7 +26,7 @@ module StrokeCounter
     end
 
     def type_feedback(key)
-      { hand: :right }
+      { hand: @layout.has_key_on(key) }
     end
   end
 end
