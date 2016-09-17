@@ -73,5 +73,9 @@ describe StrokeCounter::Keyboard do
     it 'should return a Hash' do
       expect(feedback).to be_a Hash
     end
+
+    it 'should contain :hand key' do
+      expect(feedback.keys).to include(:hand)
+    end
   end
 end
