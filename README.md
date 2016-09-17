@@ -1,4 +1,4 @@
-# StrokeCounter
+# StrokeCounter [![Build Status](https://travis-ci.org/potsbo/stroke_counter.svg?branch=master)](https://travis-ci.org/potsbo/stroke_counter)
 
 StrokeCounter can count and analyze keyboard strokes.
 It is useful to have quantitative evaluation for a keyboard layout.
