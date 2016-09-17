@@ -7,5 +7,31 @@ describe StrokeCounter::Keyboard do
     it 'should be qwerty without args' do
       expect(keyboard.name).to be(:qwerty)
     end
+
+    context 'initialize with name :dvorak (symbol)' do
+      let(:args) { { name: :dvorak } }
+      it 'should be :dvorak' do
+        expect(keyboard.name).to be(:dvorak)
+      end
+      context 'initialize with name "dvorak" (string)' do
+        let(:args) { { name: 'dvorak' } }
+        it 'should be :dvorak' do
+          expect(keyboard.name).to be(:dvorak)
+        end
+      end
+      context 'initialize with name "DVORAK" (string)' do
+        let(:args) { { name: 'DVORAK' } }
+        it 'should be :dvorak' do
+          expect(keyboard.name).to be(:dvorak)
+        end
+      end
+    end
+
+    context 'initialize with name empty string' do
+      let(:args) { { name: '' } }
+      it 'should be :qwerty' do
+        expect(keyboard.name).to be(:qwerty)
+      end
+    end
   end
 end

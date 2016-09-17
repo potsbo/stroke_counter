@@ -4,7 +4,11 @@ module StrokeCounter
 
     attr_reader :name
     def initialize(args = {} )
-      @name = args[:name] || DEFAULT
+      @name = if args[:name].nil? || args[:name].empty?
+                DEFAULT
+              else
+                args[:name].downcase.to_sym
+              end
     end
   end
 end
