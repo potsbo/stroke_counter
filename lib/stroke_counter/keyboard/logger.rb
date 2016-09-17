@@ -1,4 +1,6 @@
 class StrokeCounter::Keyboard::Logger
+  attr_reader :logs
+
   def initialize(args = {})
     @logs = []
   end

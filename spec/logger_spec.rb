@@ -10,5 +10,9 @@ describe StrokeCounter::Keyboard::Logger do
     it 'should store logs' do
       expect(logger.add_log({})).to be_truthy
     end
+
+    it 'should change log size' do
+      expect{ logger.add_log({}) }.to change{ logger.logs.size }.by(1)
+    end
   end
 end
