@@ -66,4 +66,12 @@ describe StrokeCounter::Keyboard do
       end
     end
   end
+
+  describe '#type_feedback' do
+    let(:feedback) { keyboard.type_feedback(key) }
+    let(:key) { :a }
+    it 'should return a Hash' do
+      expect(feedback).to be_a Hash
+    end
+  end
 end
