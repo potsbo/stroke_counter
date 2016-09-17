@@ -24,4 +24,12 @@ describe StrokeCounter::Keyboard::Layout do
       expect((:a..:z).to_a - layout.keys).to eq []
     end
   end
+
+  describe '#has_key_on' do
+    let(:side) { layout.has_key_on key }
+    let(:key) { :a }
+    it 'should return right or left' do
+      expect(side).to be :left
+    end
+  end
 end
