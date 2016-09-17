@@ -19,6 +19,18 @@ module StrokeCounter
         @left_side  = @rows.map { |row| row[0...5] }
         @right_side = @rows.map { |row| row[4...9] }
       end
+
+      def left_side_keys
+        @left_side.flatten
+      end
+
+      def right_side_keys
+        @right_side.flatten
+      end
+
+      def keys
+        @rows.flatten
+      end
     end
   end
 end
