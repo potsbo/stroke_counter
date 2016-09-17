@@ -32,4 +32,12 @@ describe StrokeCounter::Keyboard::Layout do
       expect(side).to be :left
     end
   end
+  describe '#finger_by_index' do
+    fingers = %i(little ring middle index index index index middle ring little)
+    fingers.each_with_index do |finger, index|
+      it "should return #{finger} for #{index}" do
+        expect(layout.finger_by_index(index)).to be finger
+      end
+    end
+  end
 end

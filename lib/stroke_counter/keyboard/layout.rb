@@ -38,6 +38,10 @@ module StrokeCounter
         return :right if right_side_keys.include? key
         nil
       end
+      def finger_by_index(index)
+        index = 9 - index if index > 4
+        %i(little ring middle index index)[index]
+      end
     end
   end
 end
