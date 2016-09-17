@@ -7,4 +7,10 @@ describe StrokeCounter::Keyboard::Layout do
       expect( layout.has_key?('q') ).to be(true)
     end
   end
+
+  describe '#name' do
+    it 'should be :qwerty for no initializer option' do
+      expect(layout.name).to be(:qwerty)
+    end
+  end
 end
