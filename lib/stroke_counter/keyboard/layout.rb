@@ -19,19 +19,6 @@ module StrokeCounter
         @left_side  = @rows.map { |row| row[0...5] }
         @right_side = @rows.map { |row| row[4...9] }
       end
-
-      def has_key?(key, on: nil)
-        case on
-          when :right
-            return @right_side.flatten.include?(key.to_sym)
-          when nil
-            return @rows.flatten.include?(key.to_sym)
-          when :left
-            return @left_side.flatten.include?(key.to_sym)
-          else
-            return false
-        end
-      end
     end
   end
 end
