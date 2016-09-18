@@ -1,6 +1,11 @@
 class StrokeCounter::Typist
+  VALID_MODE = %i(normal qwerty dvorak)
   def initialize(args = {})
-    @logger = StrokeCounter::Keyboard::Logger.new
+    @mode = args[:mode]
+    @mode = :qwerty if @mode == :normal
+    @mode = :qwerty unless VALID_MODE.include? @mode
+
+    @logger = StrokeCounter::Keyboard::Logger.new(name: @mode)
     @keyboard = StrokeCounter::Keyboard.new
   end
 
