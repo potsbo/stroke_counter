@@ -54,9 +54,9 @@ describe StrokeCounter::Keyboard::Logger do
       before do
         100.times { logger.add_log( { hand: :left, finger: :index} ) }
       end
-    end
-    it 'should be 0 to change left to right' do
-      expect(result[:left_to_right]).to be_zero
+      it 'should be 0 to change left to right' do
+        expect(result[:left_to_right]).to be_zero
+      end
     end
   end
 end
