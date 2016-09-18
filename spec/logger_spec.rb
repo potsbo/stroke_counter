@@ -67,8 +67,20 @@ describe StrokeCounter::Keyboard::Logger do
         end
       end
       it 'should be 1 to change left to right' do
-        expect(result[:left_to_right]).to be(1)
-        expect(result[:right_to_left]).to be(1)
+        expect(result[:left_to_right]).to be(1.0)
+        expect(result[:right_to_left]).to be(1.0)
+      end
+    end
+
+    context 'when 2 right keys and one 1 left key repeated' do
+      before do
+        100.times do
+          2.times { logger.add_log( { hand: :right, finger: :index } ) }
+          logger.add_log( { hand: :left, finger: :index } )
+        end
+      end
+      it 'should be 0.5 to change hand from right to left' do
+        expect(result[:right_to_left]).to be 0.5
       end
     end
   end
