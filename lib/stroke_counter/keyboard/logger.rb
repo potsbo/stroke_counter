@@ -44,8 +44,8 @@ class StrokeCounter::Keyboard::Logger
       hand = log[:hand]
     end
     size[hand] -= 1 unless hand.nil?
-    l2r = counts[:l2r] / size[:left]  rescue nil
-    r2l = counts[:r2l] / size[:right] rescue nil
+    l2r = counts[:l2r] / size[:left].to_f  rescue nil
+    r2l = counts[:r2l] / size[:right].to_f rescue nil
     { left_to_right: l2r, right_to_left: r2l }
   end
 end
