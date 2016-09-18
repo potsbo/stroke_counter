@@ -67,8 +67,8 @@ describe StrokeCounter::Keyboard::Logger do
         end
       end
       it 'should be 1 to change left to right' do
-        expect(result[:left_to_right]).to be(1)
-        expect(result[:right_to_left]).to be(1)
+        expect(result[:left_to_right]).to be(1.0)
+        expect(result[:right_to_left]).to be(1.0)
       end
     end
 
