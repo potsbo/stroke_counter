@@ -53,4 +53,14 @@ describe StrokeCounter::Keyboard::Layout do
       end
     end
   end
+
+  describe '#index_by_key' do
+    context 'when a-z given' do
+      (:a..:z).each do |c|
+        it "should return Fixnum index for #{c}" do
+          expect(layout.index_by_key(c)).to be_a Fixnum
+        end
+      end
+    end
+  end
 end
