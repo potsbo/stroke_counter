@@ -66,4 +66,60 @@ describe StrokeCounter::Keyboard do
       end
     end
   end
+
+  describe '#type_feedback' do
+    let(:feedback) { keyboard.type_feedback(key) }
+    let(:key) { :a }
+    it 'should return a Hash' do
+      expect(feedback).to be_a Hash
+    end
+
+    it 'should contain :hand key' do
+      expect(feedback.keys).to include(:hand)
+    end
+
+    it 'should contain :finger key' do
+      expect(feedback.keys).to include(:finger)
+    end
+
+    describe 'hand key' do
+      (:a..:z).each do |key|
+        let(:key) { key }
+        it 'should not be nil for a-z' do
+          expect(feedback[:hand]).not_to be_nil
+        end
+      end
+
+      { left:  %i(q w e r t a s d f g z x c v b),
+        right: %i(y u i o p h j k l ; n m , . /),
+      }.each do |side, keys|
+        keys.each do |key|
+          describe "#{side} side keys" do
+            it "should have #{key} on the #{side}" do
+              hand = keyboard.type_feedback(key)[:hand]
+              expect(hand).to be side
+            end
+          end
+        end
+      end
+
+      context 'when :a given' do
+        let(:key) { :a }
+        let(:hand) { feedback[:hand] }
+        it 'should be done by left hand' do
+          expect(hand).to be :left
+        end
+      end
+    end
+
+    describe 'finger key' do
+      context 'when :a given' do
+        let(:key) { :a }
+        let(:finger) { feedback[:finger] }
+        it 'should be :little' do
+          expect(finger).to be :little
+        end
+      end
+    end
+  end
 end

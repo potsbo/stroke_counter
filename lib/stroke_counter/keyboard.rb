@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_support/core_ext/object/blank'
 require 'stroke_counter/keyboard/layout'
+require 'stroke_counter/keyboard/logger'
 
 module StrokeCounter
   class Keyboard
@@ -23,6 +24,10 @@ module StrokeCounter
         else
           return false
       end
+    end
+
+    def type_feedback(key)
+      { hand: @layout.has_key_on(key), finger: @layout.finger_by_key(key) }
     end
   end
 end

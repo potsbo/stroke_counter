@@ -17,7 +17,7 @@ module StrokeCounter
         ].freeze
 
         @left_side  = @rows.map { |row| row[0...5] }
-        @right_side = @rows.map { |row| row[4...9] }
+        @right_side = @rows.map { |row| row[5...10] }
       end
 
       def left_side_keys
@@ -30,6 +30,29 @@ module StrokeCounter
 
       def keys
         @rows.flatten
+      end
+
+      def has_key_on(key)
+        key = key.to_sym
+        return :left if left_side_keys.include? key
+        return :right if right_side_keys.include? key
+        nil
+      end
+
+      def finger_by_key(key)
+        finger_by_index index_by_key(key)
+      end
+
+      def index_by_key(key)
+        @rows.each do |row|
+          index = row.index(key)
+          return index if index.present?
+        end
+      end
+
+      def finger_by_index(index)
+        index = 9 - index if index > 4
+        %i(little ring middle index index)[index]
       end
     end
   end
