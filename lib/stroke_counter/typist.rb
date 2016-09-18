@@ -6,10 +6,12 @@ class StrokeCounter::Typist
 
   def type_keys(str)
     str.each_char { |c| type_key(c.to_sym) }
+    self
   end
 
   def type_key(char)
     @logger.add_log @keyboard.type_feedback(char)
+    self
   end
 
   def log
