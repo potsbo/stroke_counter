@@ -49,5 +49,11 @@ describe StrokeCounter::Typist do
     it 'should return a keyboard instance' do
       expect(typist.keyboard).to be_a StrokeCounter::Keyboard
     end
+    context 'when dvorak mode' do
+      let(:args) { { mode: :dvorak } }
+      it 'should return a keyboard instance with name :dvorak' do
+        expect(typist.keyboard.name).to be :dvorak
+      end
+    end
   end
 end
