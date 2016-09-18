@@ -8,7 +8,9 @@ describe StrokeCounter::Typist do
   end
 
   describe '#type_keys' do
-    it 'should respond to alphabets'
+    it 'should respond to alphabets' do
+      expect{typist.type_keys}.not_to raise_error
+    end
   end
 
   describe '#log' do
