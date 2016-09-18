@@ -62,5 +62,11 @@ describe StrokeCounter::Keyboard::Layout do
         end
       end
     end
+
+    context 'when not normal character given' do
+      it 'should return nil' do
+        expect(layout.index_by_key("\n")).to be_nil
+      end
+    end
   end
 end
