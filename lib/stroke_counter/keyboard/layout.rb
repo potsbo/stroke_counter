@@ -17,7 +17,7 @@ module StrokeCounter
         ].freeze
 
         @left_side  = @rows.map { |row| row[0...5] }
-        @right_side = @rows.map { |row| row[4...9] }
+        @right_side = @rows.map { |row| row[5...10] }
       end
 
       def left_side_keys

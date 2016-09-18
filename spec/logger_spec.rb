@@ -44,4 +44,32 @@ describe StrokeCounter::Keyboard::Logger do
       end
     end
   end
+
+  describe '#probabilities' do
+    let(:result) { logger.probabilities }
+    it 'should return a Hash' do
+      expect(result).to be_a Hash
+    end
+    context 'when left index finger used 100 times' do
+      before do
+        100.times { logger.add_log( { hand: :left, finger: :index} ) }
+      end
+      it 'should be 0 to change left to right' do
+        expect(result[:left_to_right]).to be_zero
+      end
+    end
+
+    context 'when alternate right and left typed' do
+      before do
+        100.times do
+          logger.add_log({ hand: :left, finger: :index})
+          logger.add_log({ hand: :right, finger: :index})
+        end
+      end
+      it 'should be 1 to change left to right' do
+        expect(result[:left_to_right]).to be(1)
+        expect(result[:right_to_left]).to be(1)
+      end
+    end
+  end
 end
