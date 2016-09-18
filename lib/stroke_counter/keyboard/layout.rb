@@ -50,9 +50,11 @@ module StrokeCounter
           index = row.index(key)
           return index if index.present?
         end
+        nil
       end
 
       def finger_by_index(index)
+        return if index.nil?
         index = 9 - index if index > 4
         %i(little ring middle index index)[index]
       end

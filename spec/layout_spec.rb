@@ -52,5 +52,27 @@ describe StrokeCounter::Keyboard::Layout do
         expect(layout.finger_by_index(index)).to be finger
       end
     end
+
+    context 'when nil given' do
+      it 'should return nil' do
+        expect(layout.finger_by_index(nil)).to be_nil
+      end
+    end
+  end
+
+  describe '#index_by_key' do
+    context 'when a-z given' do
+      (:a..:z).each do |c|
+        it "should return Fixnum index for #{c}" do
+          expect(layout.index_by_key(c)).to be_a Fixnum
+        end
+      end
+    end
+
+    context 'when not normal character given' do
+      it 'should return nil' do
+        expect(layout.index_by_key("\n")).to be_nil
+      end
+    end
   end
 end

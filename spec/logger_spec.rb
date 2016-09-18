@@ -83,5 +83,14 @@ describe StrokeCounter::Keyboard::Logger do
         expect(result[:right_to_left]).to be 0.5
       end
     end
+
+    context 'when nil hand given' do
+      before do
+        logger.add_log( { hand: nil, finger: nil } )
+      end
+      it 'should not raise error' do
+        expect{ logger.probabilities }.not_to raise_error
+      end
+    end
   end
 end
