@@ -16,7 +16,9 @@ class StrokeCounter::Keyboard::Logger
 
   def analyze
     return { left: nil, right: nil} if @logs.size == 0
-    { left: left_strokes.size / @logs.size.to_f, right: right_strokes.size / @logs.size.to_f }
+    { left: left_strokes.size / @logs.size.to_f, right: right_strokes.size / @logs.size.to_f,
+      probabilities: probabilities
+    }
   end
 
   def left_strokes
