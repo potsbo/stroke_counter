@@ -32,6 +32,17 @@ class StrokeCounter::Keyboard::Logger
   end
 
   def probabilities
-    { left_to_right: 0, right_to_left: 0 }
+    hand   = nil
+    counts = { r2l: 0, l2r: 0 }
+    size   = { right: 0, left: 0}
+    @logs.each do |log|
+      size[log[:hand]] += 1
+      counts[:r2l] += 1 if hand == :right && log[:hand] == :left
+      counts[:l2r] += 1 if hand == :left  && log[:hand] == :right
+      hand = log[:hand]
+    end
+    size[hand] -= 1
+
+    { left_to_right: counts[:l2r] / size[:left], right_to_left:  counts[:r2l] / size[:right] }
   end
 end
