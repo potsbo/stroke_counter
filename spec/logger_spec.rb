@@ -89,7 +89,7 @@ describe StrokeCounter::Keyboard::Logger do
         logger.add_log( { hand: nil, finger: nil } )
       end
       it 'should not raise error' do
-        expect(logger.probabilities).not_to raise_error
+        expect{ logger.probabilities }.not_to raise_error
       end
     end
   end

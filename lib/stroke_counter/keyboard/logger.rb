@@ -36,12 +36,14 @@ class StrokeCounter::Keyboard::Logger
   def probabilities
     hand   = nil
     counts = { r2l: 0, l2r: 0 }
-    size   = { right: 0, left: 0}
+    size   = { right: 0, left: 0, other: 0}
     @logs.each do |log|
-      size[log[:hand]] += 1
+      side = log[:hand]
+      side = :other unless %i(right left).include? side
+      size[side] += 1
       counts[:r2l] += 1 if hand == :right && log[:hand] == :left
       counts[:l2r] += 1 if hand == :left  && log[:hand] == :right
-      hand = log[:hand]
+      hand = side
     end
     size[hand] -= 1 unless hand.nil?
     l2r = counts[:l2r] / size[:left].to_f  rescue nil
