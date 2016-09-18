@@ -1,5 +1,7 @@
 class StrokeCounter::Typist
   VALID_MODE = %i(normal qwerty dvorak)
+  attr_reader :mode
+
   def initialize(args = {})
     @mode = args[:mode]
     @mode = :qwerty if @mode == :normal

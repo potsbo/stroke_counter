@@ -25,4 +25,10 @@ describe StrokeCounter::Typist do
       expect(typist.result).to be_a(Hash)
     end
   end
+
+  describe '#mode' do
+    it 'should return :qwerty' do
+      expect(typist.mode).to be :qwerty
+    end
+  end
 end
