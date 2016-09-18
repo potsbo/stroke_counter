@@ -20,4 +20,8 @@ class StrokeCounter::Keyboard::Logger
     right_strokes = @logs.select { |log| log[:hand] == :right }
     { left: left_strokes.size / @logs.size.to_f, right: right_strokes.size / @logs.size.to_f }
   end
+
+  def probabilities
+    { left_to_right: 0, right_to_left: 0 }
+  end
 end
