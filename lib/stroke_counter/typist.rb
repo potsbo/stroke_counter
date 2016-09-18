@@ -6,4 +6,8 @@ class StrokeCounter::Typist
   def log
     @logger.logs
   end
+
+  def result
+    @logger.analyze
+  end
 end

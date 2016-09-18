@@ -16,4 +16,10 @@ describe StrokeCounter::Typist do
       expect(typist.log).to be_a(Array)
     end
   end
+
+  describe '#result' do
+    it 'should be a Hash' do
+      expect(typist.result).to be_a(Hash)
+    end
+  end
 end
