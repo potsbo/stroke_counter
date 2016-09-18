@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_support/core_ext/object/blank'
 require 'stroke_counter/keyboard/layout'
+require 'stroke_counter/keyboard/logger'
 
 module StrokeCounter
   class Keyboard
