@@ -83,6 +83,12 @@ describe StrokeCounter::Keyboard do
     end
 
     describe 'hand key' do
+      (:a..:z).each do |key|
+        let(:key) { key }
+        it 'should not be nil for a-z' do
+          expect(feedback[:hand]).not_to be_nil
+        end
+      end
       context 'when :a given' do
         let(:key) { :a }
         let(:hand) { feedback[:hand] }
