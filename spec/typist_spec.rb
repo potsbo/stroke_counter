@@ -44,4 +44,10 @@ describe StrokeCounter::Typist do
       end
     end
   end
+
+  describe '#keyboard' do
+    it 'should return a keyboard instance' do
+      expect(typist.keyboard).to be_a StrokeCounter::Keyboard
+    end
+  end
 end
