@@ -7,14 +7,22 @@ module StrokeCounter
       end
 
       def to_keys(input)
-        keys = ''
-        input.each_char do |c|
-          pat = @table.find do |pattern|
-            pattern[:output] == c
-          end
-          keys += pat[:input].to_s if pat
+        keys = []
+        while !input.empty?
+          pat   = best_pattern_for(input)
+          keys << pat[:input].to_s if pat
+          input = input[pat[:output].size..-1]
         end
-        keys
+        keys.join
+      end
+
+      def best_pattern_for(input)
+        pats = @table.select do |pattern|
+          input.start_with? pattern[:output]
+        end
+        pats.reverse!
+        pats = pats.sort_by { |pattern| pattern[:output].to_s.size / pattern[:input].to_s.size.to_f }
+        pats.last
       end
     end
   end
