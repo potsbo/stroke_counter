@@ -5,7 +5,9 @@ describe StrokeCounter::Typist do
   let(:typist) { StrokeCounter::Typist.new(args) }
 
   describe '#type_language' do
-    it 'should respond to Japanese'
+    it 'should respond to Japanese' do
+      expect{typist.type_language('きょうはいいてんきですね。')}.not_to raise_error
+    end
   end
 
   describe '#type_keys' do
