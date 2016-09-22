@@ -94,6 +94,8 @@ describe StrokeCounter::Typist::Brain do
           'きょうはめちゃくちゃいいてんきってかんじですね。' => "cn,hametnacutnaytjcittec;zidesunel.",
           'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => "gatturic.shocuhxd'c,hn,hatub'tnpl.",
           'あいんしゅたいんはかみれべるのぶつりがくしゃ' => "axshutaxhacamireberunobuturigacusha",
+          'きいはんとうってどこにあるの。' => "cyh;t,ttedoconiarunol.",
+          'ぶぶんぶんすうぶんかいってしってるかい' => "bubkbkspbkc'ttesitteruc'",
         }
         test_cases.each do |jp,en|
           context "when '#{jp}' given" do
