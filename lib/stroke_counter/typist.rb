@@ -1,4 +1,5 @@
 require 'stroke_counter/typist/brain'
+require 'stroke_counter/typist/interpreter'
 
 class StrokeCounter::Typist
   VALID_MODE = %i(normal qwerty dvorak)
