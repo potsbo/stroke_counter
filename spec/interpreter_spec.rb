@@ -14,6 +14,7 @@ describe StrokeCounter::Typist::Brain::Interpreter do
       "部分分数分解" => 'ブブンブンスウブンカイ',
       "重箱が重なっている" => 'ジュウバコガカサナッテイル',
       "カタカナ" => 'カタカナ',
+      "50個あります" => '50コアリマス',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do

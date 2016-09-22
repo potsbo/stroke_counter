@@ -9,7 +9,7 @@ module StrokeCounter
           words = []
           nm.parse(input) do |n|
             feature = n.feature.split(',')
-            words << feature[7] unless feature[0] == 'BOS/EOS'
+            words << (feature[7] || n.surface) unless feature[0] == 'BOS/EOS'
           end
           words.join
         end
