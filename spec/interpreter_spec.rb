@@ -23,4 +23,21 @@ describe StrokeCounter::Typist::Brain::Interpreter do
       end
     end
   end
+
+  describe '.to_hiragana' do
+    let(:text) { "ヒラガナ" }
+    let(:hira) { interpreter.to_hiragana(text) }
+    test_cases = {
+      "ヒラガナ" => 'ひらがな',
+      "ワリトナガイカタカナ" => 'わりとながいかたかな',
+    }
+    test_cases.each do |jp,result|
+      context "when '#{jp}' given" do
+        let(:text) { jp }
+        it "should return '#{result}' for '#{jp}'" do
+          expect(hira).to eq result
+        end
+      end
+    end
+  end
 end

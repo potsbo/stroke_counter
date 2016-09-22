@@ -13,6 +13,10 @@ module StrokeCounter
           end
           words.join
         end
+
+        def to_hiragana(input)
+          input.tr('ァ-ン','ぁ-ん')
+        end
       end
     end
   end
