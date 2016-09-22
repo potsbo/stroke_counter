@@ -9,8 +9,14 @@ class StrokeCounter::Typist
     @mode = :qwerty if @mode == :normal
     @mode = :qwerty unless VALID_MODE.include? @mode
 
-    @logger = StrokeCounter::Keyboard::Logger.new
+    @logger   = StrokeCounter::Keyboard::Logger.new
     @keyboard = StrokeCounter::Keyboard.new(name: @mode)
+    @brain    = Brain.new(mode: :dvorak)
+  end
+
+  # TODO: kanji, or katakana to hiragana
+  def type_language(input)
+    type_keys @brain.to_keys(input)
   end
 
   def type_keys(str)
