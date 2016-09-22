@@ -15,9 +15,11 @@ class StrokeCounter::Typist
     @brain    = Brain.new(mode: :dvorak)
   end
 
-  # TODO: kanji, or katakana to hiragana
+  include  Brain::Interpreter
+
   def type_language(input)
-    type_keys @brain.to_keys(input)
+    hiragana = yomi(input)
+    type_keys @brain.to_keys(hiragana)
   end
 
   def type_keys(str)

@@ -13,6 +13,7 @@ describe StrokeCounter::Typist::Brain::Interpreter do
       "今日の新聞は分厚い" => 'キョウノシンブンハブアツイ',
       "部分分数分解" => 'ブブンブンスウブンカイ',
       "重箱が重なっている" => 'ジュウバコガカサナッテイル',
+      "カタカナ" => 'カタカナ',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do
@@ -30,6 +31,22 @@ describe StrokeCounter::Typist::Brain::Interpreter do
     test_cases = {
       "ヒラガナ" => 'ひらがな',
       "ワリトナガイカタカナ" => 'わりとながいかたかな',
+    }
+    test_cases.each do |jp,result|
+      context "when '#{jp}' given" do
+        let(:text) { jp }
+        it "should return '#{result}' for '#{jp}'" do
+          expect(hira).to eq result
+        end
+      end
+    end
+  end
+
+  describe '.yomi' do
+    let(:text) { "ヒラガナ" }
+    let(:hira) { interpreter.yomi(text) }
+    test_cases = {
+      "漢字とカタカナとひらがなが混ざった文" => 'かんじとかたかなとひらがながまざったぶん',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do

@@ -17,6 +17,11 @@ module StrokeCounter
         def to_hiragana(input)
           input.tr('ァ-ン','ぁ-ん')
         end
+
+        def yomi(input)
+          katakana = to_katakana(input)
+          to_hiragana(katakana)
+        end
       end
     end
   end
