@@ -77,6 +77,7 @@ describe StrokeCounter::Typist::Brain do
           'やゆよ'    => 'fafufo',
           'らりるれろ' => 'rarirurero',
           'わをん'    => 'wawq',
+          'あんぱん'    => ';v;',
         }
         test_cases.each do |jp,en|
           context "when '#{jp}' given" do
@@ -90,9 +91,9 @@ describe StrokeCounter::Typist::Brain do
 
       describe 'normal sentence' do
         test_cases = {
-          'きょうはめちゃくちゃいいてんきってかんじですね。' => "cn,hametnacutn'itjcittec;zidesunel.",
+          'きょうはめちゃくちゃいいてんきってかんじですね。' => "cn,hametnacutnaytjcittec;zidesunel.",
           'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => "gatturic.shocuhxd'c,hn,hatub'tnpl.",
-          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => "'xshutaxhacamireberunobuturigacusha",
+          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => "axshutaxhacamireberunobuturigacusha",
         }
         test_cases.each do |jp,en|
           context "when '#{jp}' given" do
