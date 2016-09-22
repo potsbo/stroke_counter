@@ -23,7 +23,7 @@ module StrokeCounter
         patterns.select{ |pattern| input.start_with?(pattern[:output].to_s) && pattern[:output].present?}
       end
 
-      def best_score_pattern(input: input, patterns: @table)
+      def best_score_pattern(input: '', patterns: @table)
         patterns.max_by{ |pattern| pattern[:efficiency] }
       end
 
@@ -33,7 +33,6 @@ module StrokeCounter
         pats = pats.select do |pattern|
           compatible_with_next(input[pattern[:output].size..-1].to_s,pattern[:addition].to_s)
         end
-        puts pats.map { |pattern| [pattern, efficiency_with_next(input: input, pattern: pattern)] }
         pat = pats.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
         @rest = pat[:addition]
         pat
