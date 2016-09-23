@@ -4,5 +4,5 @@ rvm:
   - 2.3.1
 before_install:
   - gem install bundler -v 1.13.1
-  - curl https://gist.githubusercontent.com/potsbo/cd184a3b0a30ce0c28322e5109bc62ac/raw/45a4f8deee0457b83d372745821bc98319adc965/mecab_install.sh | bash
+  - curl https://gist.githubusercontent.com/potsbo/cd184a3b0a30ce0c28322e5109bc62ac/raw/6888a64269cb24aed1e2df439351ec06dbdc6906/mecab_install.sh | bash
 cache: bundler
