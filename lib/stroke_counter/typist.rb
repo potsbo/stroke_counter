@@ -12,7 +12,7 @@ class StrokeCounter::Typist
 
     @logger   = StrokeCounter::Keyboard::Logger.new
     @keyboard = StrokeCounter::Keyboard.new(name: @mode)
-    @brain    = Brain.new(mode: :dvorak)
+    @brain    = Brain.new(mode: @mode)
   end
 
   include  Brain::Interpreter
