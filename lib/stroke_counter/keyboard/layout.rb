@@ -1,13 +1,15 @@
 require 'stroke_counter/keyboard/layout/qwerty'
 require 'stroke_counter/keyboard/layout/dvorak'
+require 'stroke_counter/keyboard/layout/colemak'
 
 module StrokeCounter
   class Keyboard
     class Layout
       DEFAULT = :qwerty
       PRESETS = {
-          qwerty: QWERTY,
-          dvorak: DVORAK,
+          qwerty:  QWERTY,
+          dvorak:  DVORAK,
+          colemak: COLEMAK,
       }
       attr_reader :name
       def initialize(args = {} )

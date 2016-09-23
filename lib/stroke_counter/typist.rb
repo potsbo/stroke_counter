@@ -10,8 +10,8 @@ class StrokeCounter::Typist
     @mode = :qwerty unless VALID_MODE.include? @mode
 
     @logger   = StrokeCounter::Keyboard::Logger.new
-    @keyboard = StrokeCounter::Keyboard.new(name: @mode)
-    @brain    = Brain.new(mode: :dvorak)
+    @keyboard = StrokeCounter::Keyboard.new(name: args[:keyboard] || @mode)
+    @brain    = Brain.new(mode: args[:brain] || @mode)
   end
 
   # TODO: kanji, or katakana to hiragana
