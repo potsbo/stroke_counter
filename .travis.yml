@@ -3,6 +3,6 @@ language: ruby
 rvm:
   - 2.3.1
 before_install:
-  - gem install bundler -v 1.13.0
+  - gem install bundler -v 1.13.1
   - curl https://gist.githubusercontent.com/kazupon/77f615dca247a5d6aef17febade8365c/raw/accc370e790fa3fc8a698a706a9bd9b4d84c0dc2/mecab_install.sh | bash
 cache: bundler
