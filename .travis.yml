@@ -6,6 +6,6 @@ services:
 
 before_install:
   - docker pull potsbo/ruby-mecab
-  - docker run -d potsbo/ruby-mecab /bin/bash -c "cd"
+  - docker run -t -i potsbo/ruby-mecab /bin/bash -c "cd"
 
 cache: bundler
