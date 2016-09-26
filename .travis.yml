@@ -1,8 +1,14 @@
 sudo: required
 language: ruby
-rvm:
-  - 2.3.1
+
+services:
+  - docker
+
+before_script:
+  - docker pull potsbo/ruby-mecab
+
 before_install:
   - gem install bundler -v 1.13.1
-  - curl https://gist.githubusercontent.com/potsbo/cd184a3b0a30ce0c28322e5109bc62ac/raw/6888a64269cb24aed1e2df439351ec06dbdc6906/mecab_install.sh | bash
+  - docker run -d potsbo/ruby-mecab /bin/bash -c "cd"
+
 cache: bundler
