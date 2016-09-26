@@ -4,11 +4,8 @@ language: ruby
 services:
   - docker
 
-before_script:
-  - docker pull potsbo/ruby-mecab
-
 before_install:
-  - gem install bundler -v 1.13.1
+  - docker pull potsbo/ruby-mecab
   - docker run -d potsbo/ruby-mecab /bin/bash -c "cd"
 
 cache: bundler
