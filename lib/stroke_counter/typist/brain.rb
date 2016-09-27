@@ -2,8 +2,17 @@ module StrokeCounter
   class Typist
     class Brain
       class NoCompatiblePattern < StandardError; end
+      CONF = {
+        anpan: Anpan::CONF,
+        google: Anpan::GOOGLE_JAPANESE,
+      }
       def initialize(mode: :normal)
-        conf = mode == :normal ? Anpan::GOOGLE_JAPANESE : Anpan::CONF
+        @mode = mode
+        @mode = :google if @mode == :normal
+        @mode = :google unless CONF.keys.include? @mode
+
+        conf = CONF[@mode]
+
         @table = Anpan.new(conf).table.map { |pat|
           pat[:efficiency] = pat[:output].to_s.size / pat[:input].to_s.size.to_f
           pat
@@ -55,10 +64,7 @@ module StrokeCounter
 
       def compatible_with_next(input, addition)
         return true if input.empty?
-        pats = @table.select do |pattern|
-          input.start_with? pattern[:output]
-        end
-        pats.find { |pat| pat[:input].to_s.start_with? addition.to_s}
+        compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s}
       end
     end
   end
