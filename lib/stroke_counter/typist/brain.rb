@@ -43,7 +43,7 @@ module StrokeCounter
 
       def best_pattern_for(input: '', patterns: @table)
         pats = patterns.select { |pattern| pattern[:input].to_s.start_with? @rest.to_s }
-        pats = pats.select { |pattern| input.start_with? pattern[:output] }
+        pats = compatible_patterns(input: input, patterns: pats)
         pats = pats.select do |pattern|
           compatible_with_next(input[pattern[:output].size..-1].to_s,pattern[:addition].to_s)
         end
