@@ -33,6 +33,16 @@ class StrokeCounter::Keyboard::Logger
     @logs.select { |log| log[:hand] == hand}
   end
 
+  def finger_frequency(hand: nil)
+    return { left: finger_frequency(hand: :left), right: finger_frequency(hand: :right)} if hand.nil?
+    counts = { index: 0, middle: 0, ring: 0, little: 0 }
+    hand_strokes(hand).each do |stroke|
+      finger = stroke[:finger]
+      counts[finger] += 1
+    end
+    counts
+  end
+
   def probabilities
     hand   = nil
     counts = { r2l: 0, l2r: 0 }

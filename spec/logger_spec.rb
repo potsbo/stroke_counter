@@ -93,4 +93,25 @@ describe StrokeCounter::Keyboard::Logger do
       end
     end
   end
+
+  describe '#finger_frequency' do
+    let(:hand) { nil }
+    let(:frequency) { logger.finger_frequency(hand: hand) }
+    describe 'right hand' do
+      let(:hand) { :right }
+      context ' when right index finger used 5 times' do
+        before do
+          5.times { |_| logger.add_log( { hand: :right, finger: :index } )}
+        end
+        it 'should be 5' do
+          expect(frequency[:index]).to be 5
+        end
+      end
+    end
+    describe 'both hand' do
+      it 'should return both right hand and left hand' do
+        expect(frequency.keys).to include *%i(right left)
+      end
+    end
+  end
 end
