@@ -1,8 +1,18 @@
 module StrokeCounter
   class Typist
     class Brain
+      class NoCompatiblePattern < StandardError; end
+      CONF = {
+        anpan: Anpan::CONF,
+        google: Anpan::GOOGLE_JAPANESE,
+      }
       def initialize(mode: :normal)
-        conf = mode == :normal ? Anpan::GOOGLE_JAPANESE : Anpan::CONF
+        @mode = mode
+        @mode = :google if @mode == :normal
+        @mode = :google unless CONF.keys.include? @mode
+
+        conf = CONF[@mode]
+
         @table = Anpan.new(conf).table.map { |pat|
           pat[:efficiency] = pat[:output].to_s.size / pat[:input].to_s.size.to_f
           pat
@@ -12,8 +22,12 @@ module StrokeCounter
       def to_keys(input)
         keys = []
         until input.empty?
-          pat   = best_pattern_for(input: input)
-          keys << pat[:input].to_s[@rest.size..-1] if pat
+          begin
+            pat   = best_pattern_for(input: input)
+          rescue => e
+            pat   = { input: input[0], output: input[0] }
+          end
+          keys << pat[:input].to_s[@rest.to_s.size..-1] if pat
           input = input[pat[:output].size..-1]
         end
         keys.join
@@ -29,12 +43,13 @@ module StrokeCounter
 
       def best_pattern_for(input: '', patterns: @table)
         pats = patterns.select { |pattern| pattern[:input].to_s.start_with? @rest.to_s }
-        pats = pats.select { |pattern| input.start_with? pattern[:output] }
+        pats = compatible_patterns(input: input, patterns: pats)
         pats = pats.select do |pattern|
           compatible_with_next(input[pattern[:output].size..-1].to_s,pattern[:addition].to_s)
         end
         pat = pats.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
-        @rest = pat[:addition]
+        @rest = pat[:addition] rescue nil
+        raise NoCompatiblePattern, "No compatible pattern for '#{input[0]}'" if pat.nil?
         pat
       end
 
@@ -49,10 +64,7 @@ module StrokeCounter
 
       def compatible_with_next(input, addition)
         return true if input.empty?
-        pats = @table.select do |pattern|
-          input.start_with? pattern[:output]
-        end
-        pats.find { |pat| pat[:input].to_s.start_with? addition.to_s}
+        compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s}
       end
     end
   end
