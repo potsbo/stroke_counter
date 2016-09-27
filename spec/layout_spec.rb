@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe StrokeCounter::Keyboard::Layout do
-  let(:layout) { StrokeCounter::Keyboard::Layout.new }
+  let(:name) { :qwerty }
+  let(:layout) { StrokeCounter::Keyboard::Layout.new(name: name) }
 
   describe '#left_side_keys' do
     it 'should contain 15 characters' do
@@ -16,12 +17,18 @@ describe StrokeCounter::Keyboard::Layout do
   end
 
   describe '#keys' do
-    it 'should contain 30 characters' do
-      expect(layout.keys.size).to be 30
-    end
+    settings = %i(qwerty dvorak colemak)
+    settings.each do |setting|
+      context "when layout name is #{setting} " do
+        let(:name) { setting }
+        it 'should contain 30 characters' do
+          expect(layout.keys.size).to be 30
+        end
 
-    it 'should contain all 26 alphabets' do
-      expect((:a..:z).to_a - layout.keys).to eq []
+        it 'should contain all 26 alphabets' do
+          expect((:a..:z).to_a - layout.keys).to eq []
+        end
+      end
     end
   end
 
