@@ -4,5 +4,4 @@ require "stroke_counter/typist"
 require "anpan"
 
 module StrokeCounter
-  # Your code goes here...
 end
