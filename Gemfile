@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 gem 'activesupport'
 gem 'anpan', github: 'potsbo/anpan'
+gem 'natto'

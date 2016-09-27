@@ -1,4 +1,5 @@
 require 'stroke_counter/typist/brain'
+require 'stroke_counter/typist/interpreter'
 
 class StrokeCounter::Typist
   VALID_MODE = %i(normal qwerty dvorak)
@@ -14,9 +15,11 @@ class StrokeCounter::Typist
     @brain    = Brain.new(mode: args[:brain] || @mode)
   end
 
-  # TODO: kanji, or katakana to hiragana
+  include  Brain::Interpreter
+
   def type_language(input)
-    type_keys @brain.to_keys(input)
+    hiragana = yomi(input)
+    type_keys @brain.to_keys(hiragana)
   end
 
   def type_keys(str)
