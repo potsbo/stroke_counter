@@ -1,6 +1,7 @@
 module StrokeCounter
   class Typist
     class Brain
+      class NoCompatiblePattern < StandardError; end
       def initialize(mode: :normal)
         conf = mode == :normal ? Anpan::GOOGLE_JAPANESE : Anpan::CONF
         @table = Anpan.new(conf).table.map { |pat|
@@ -12,8 +13,12 @@ module StrokeCounter
       def to_keys(input)
         keys = []
         until input.empty?
-          pat   = best_pattern_for(input: input)
-          keys << pat[:input].to_s[@rest.size..-1] if pat
+          begin
+            pat   = best_pattern_for(input: input)
+          rescue => e
+            pat   = { input: input[0], output: input[0] }
+          end
+          keys << pat[:input].to_s[@rest.to_s.size..-1] if pat
           input = input[pat[:output].size..-1]
         end
         keys.join
@@ -34,7 +39,8 @@ module StrokeCounter
           compatible_with_next(input[pattern[:output].size..-1].to_s,pattern[:addition].to_s)
         end
         pat = pats.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
-        @rest = pat[:addition]
+        @rest = pat[:addition] rescue nil
+        raise NoCompatiblePattern, "No compatible pattern for '#{input[0]}'" if pat.nil?
         pat
       end
 
