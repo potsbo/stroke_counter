@@ -1,5 +1,6 @@
 require 'stroke_counter/typist/brain'
 require 'stroke_counter/typist/interpreter'
+require 'stroke_counter/typist/assessment'
 
 class StrokeCounter::Typist
   VALID_MODE = %i(normal qwerty dvorak)
@@ -16,6 +17,7 @@ class StrokeCounter::Typist
   end
 
   include  Brain::Interpreter
+  include  Assessment
 
   def type_language(input)
     hiragana = yomi(input)

@@ -52,6 +52,7 @@ describe StrokeCounter::Typist::Brain do
     describe 'normal sentence' do
       test_cases = {
         'きょうはめちゃくちゃいいてんきってかんじですね。' => 'kyouhametyakutyaiitenkittekanzidesune.',
+        'にっぽんこくけんぽう' => 'nipponkokukenpou',
       }
       test_cases.each do |jp,en|
         context "when '#{jp}' given" do
@@ -64,7 +65,7 @@ describe StrokeCounter::Typist::Brain do
     end
 
     context 'when mode is dvorak' do
-      let(:mode) { :dvorak }
+      let(:mode) { :anpan }
       describe 'one to one patterns' do
         test_cases = {
           'あいうえお' => "'ueo",
@@ -105,6 +106,14 @@ describe StrokeCounter::Typist::Brain do
             end
           end
         end
+      end
+    end
+  end
+
+  describe '#compatible_with_next' do
+    context 'when "っぽん" given' do
+      it 'should not be compatible' do
+        expect(brain.compatible_with_next('ぽん', 'w')).to be_falsey
       end
     end
   end
