@@ -20,10 +20,12 @@ module StrokeCounter
         return { left: nil, right: nil } if @logs.empty?
         {
           left: left_strokes.size / @logs.size.to_f, right: right_strokes.size / @logs.size.to_f,
-          probabilities: probabilities, keys_size: @logs.size, finger_frequency: finger_frequency
+          probabilities: probabilities, keys_size: @logs.size, finger_frequency: finger_frequency,
+          rows: rows_summary
         }
       end
 
+      # hand strokes
       def left_strokes
         hand_strokes(:left)
       end
@@ -33,8 +35,9 @@ module StrokeCounter
       end
 
       def hand_strokes(hand)
-        @logs.select { |log| log[:hand] == hand }
+        @logs.select { |log| log[:hand] == hand}
       end
+      # hand strokes
 
       def finger_frequency(hand: nil)
         return finger_frequency_summary unless hand
@@ -76,6 +79,18 @@ module StrokeCounter
         hand = @logs.last[:hand] unless @logs.empty?
         size[hand] -= 1 if hand
         size
+      end
+
+      def rows_summary
+        hash = {}
+        %i(upper middle lower).each do |row|
+          hash[row] = row_strokes(row).size / @logs.size.to_f
+        end
+        hash
+      end
+
+      def row_strokes(row, logs: @logs)
+        logs.select { |log| log[:row] == row}
       end
     end
   end
