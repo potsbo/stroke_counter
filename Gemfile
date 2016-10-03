@@ -5,3 +5,5 @@ gemspec
 gem 'activesupport'
 gem 'anpan', github: 'potsbo/anpan'
 gem 'natto'
+
+gem 'codecov', :require => false, :group => :test
