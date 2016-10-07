@@ -12,7 +12,7 @@ module StrokeCounter
         colemak: COLEMAK,
       }.freeze
       attr_reader :name
-      def initialize(args = {} )
+      def initialize(args = {})
         @name = (args[:name].presence || DEFAULT).downcase.to_sym
         initialize_with_name
       end
