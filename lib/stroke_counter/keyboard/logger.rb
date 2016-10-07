@@ -53,8 +53,8 @@ module StrokeCounter
       def probabilities
         counts = hand_switch_counts
         size   = hand_switch_candidate_counts
-        l2r = counts[:l2r] / size[:left].to_f  rescue nil
-        r2l = counts[:r2l] / size[:right].to_f rescue nil
+        l2r = size[:left].zero? ?  nil : counts[:l2r] / size[:left].to_f
+        r2l = size[:right].zero? ? nil : counts[:r2l] / size[:right].to_f
         { left_to_right: l2r, right_to_left: r2l }
       end
 
