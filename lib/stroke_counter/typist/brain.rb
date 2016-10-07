@@ -54,8 +54,7 @@ module StrokeCounter
 
       def efficiency_with_next(input: '', pattern: {})
         next_input = input[pattern[:output].size..-1]
-        patterns = compatible_patterns(input: next_input)
-        next_pattern = best_score_pattern(patterns: patterns)
+        next_pattern = best_score_pattern(patterns: compatible_patterns(input: next_input))
         next_output  = next_pattern.nil? ? 0 : next_pattern[:output].to_s
         next_input   = next_pattern.nil? ? 0 : next_pattern[:input].to_s
         (next_output.size + pattern[:output].to_s.size) / (next_input.size + pattern[:input].to_s.size).to_f
