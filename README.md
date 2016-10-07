@@ -26,7 +26,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can simply assess a keyboard layout with following code.
+```ruby
+StrokeCounter::Typist.new(mode: :dvorak).assess
+````
 
 ## Development
 
