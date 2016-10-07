@@ -20,7 +20,7 @@ describe StrokeCounter::Typist::Brain do
         'らりるれろ' => 'rarirurero',
         'わをん' => 'wawon',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -39,7 +39,7 @@ describe StrokeCounter::Typist::Brain do
         'ちゃちゅちょ'      => 'tyatyutyo',
         'ちゃちちゅちぇちょ' => 'tyatityutyetyo',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -54,7 +54,7 @@ describe StrokeCounter::Typist::Brain do
         'きょうはめちゃくちゃいいてんきってかんじですね。' => 'kyouhametyakutyaiitenkittekanzidesune.',
         'にっぽんこくけんぽう' => 'nipponkokukenpou',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -80,7 +80,7 @@ describe StrokeCounter::Typist::Brain do
           'わをん'    => 'wawq',
           'あんぱん'    => ';v;',
         }
-        test_cases.each do |jp,en|
+        test_cases.each do |jp, en|
           context "when '#{jp}' given" do
             let(:input) { jp }
             it "should return #{en}" do
@@ -98,7 +98,7 @@ describe StrokeCounter::Typist::Brain do
           'きいはんとうってどこにあるの。' => 'cyh;t,ttedoconiarunol.',
           'ぶぶんぶんすうぶんかいってしってるかい' => 'bubkbkspbkc\'ttesitteruc\'',
         }
-        test_cases.each do |jp,en|
+        test_cases.each do |jp, en|
           context "when '#{jp}' given" do
             let(:input) { jp }
             it "should return #{en}" do
