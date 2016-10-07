@@ -5,11 +5,11 @@ module StrokeCounter
       CONF = {
         anpan: Anpan::An::CONF,
         google: Anpan::An::GOOGLE_JAPANESE,
+        normal: Anpan::An::GOOGLE_JAPANESE,
       }.freeze
       def initialize(mode: :normal)
         @mode = mode
-        @mode = :google if @mode == :normal
-        @mode = :google unless CONF.keys.include? @mode
+        @mode = :normal unless CONF.keys.include? @mode
 
         conf = CONF[@mode]
 
