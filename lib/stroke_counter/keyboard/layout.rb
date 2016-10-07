@@ -7,9 +7,9 @@ module StrokeCounter
     class Layout
       DEFAULT = :qwerty
       PRESETS = {
-          qwerty:  QWERTY,
-          dvorak:  DVORAK,
-          colemak: COLEMAK,
+        qwerty:  QWERTY,
+        dvorak:  DVORAK,
+        colemak: COLEMAK,
       }.freeze
       attr_reader :name
       def initialize(args = {} )
