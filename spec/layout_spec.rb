@@ -70,8 +70,8 @@ describe StrokeCounter::Keyboard::Layout do
   describe '#index_by_key' do
     context 'when a-z given' do
       (:a..:z).each do |c|
-        it "should return Fixnum index for #{c}" do
-          expect(layout.index_by_key(c)).to be_a Fixnum
+        it "should return Integer index for #{c}" do
+          expect(layout.index_by_key(c)).to be_a Integer
         end
       end
     end
