@@ -42,8 +42,8 @@ describe StrokeCounter::Keyboard::Layout do
 
   describe '#finger_by_key' do
     key_fingers = {
-        a: :little, s: :ring,  d: :middle, f: :index,   g: :index,
-        h: :index,  j: :index, k: :middle, l: :ring,  ';': :little
+      a: :little, s: :ring,  d: :middle, f: :index,  g: :index,
+      h: :index,  j: :index, k: :middle, l: :ring, ';': :little
     }
     key_fingers.each do |key, finger|
       it "should return #{finger} for #{key}" do
