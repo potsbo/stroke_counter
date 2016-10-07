@@ -104,7 +104,7 @@ describe StrokeCounter::Keyboard::Logger do
       end
       context ' when right index finger used 5 times' do
         before do
-          5.times { |_| logger.add_log( { hand: :right, finger: :index } )}
+          5.times { |_| logger.add_log({ hand: :right, finger: :index }) }
         end
         it 'should be 5' do
           expect(frequency[:index]).to be 5
