@@ -8,8 +8,7 @@ module StrokeCounter
         normal: Anpan::An::GOOGLE_JAPANESE,
       }.freeze
       def initialize(mode: :normal)
-        @mode = mode
-        @mode = :normal unless CONF.keys.include? @mode
+        @mode = CONF.keys.include?(mode) ? mode : :normal
 
         conf = CONF[@mode]
 
