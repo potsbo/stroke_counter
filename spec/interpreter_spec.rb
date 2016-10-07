@@ -16,7 +16,7 @@ describe StrokeCounter::Typist::Brain::Interpreter do
       'カタカナ' => 'カタカナ',
       '50個あります' => '50コアリマス',
     }
-    test_cases.each do |jp,result|
+    test_cases.each do |jp, result|
       context "when '#{jp}' given" do
         let(:text) { jp }
         it "should return '#{result}' for '#{jp}'" do
@@ -33,7 +33,7 @@ describe StrokeCounter::Typist::Brain::Interpreter do
       'ヒラガナ' => 'ひらがな',
       'ワリトナガイカタカナ' => 'わりとながいかたかな',
     }
-    test_cases.each do |jp,result|
+    test_cases.each do |jp, result|
       context "when '#{jp}' given" do
         let(:text) { jp }
         it "should return '#{result}' for '#{jp}'" do
@@ -49,7 +49,7 @@ describe StrokeCounter::Typist::Brain::Interpreter do
     test_cases = {
       '漢字とカタカナとひらがなが混ざった文' => 'かんじとかたかなとひらがながまざったぶん',
     }
-    test_cases.each do |jp,result|
+    test_cases.each do |jp, result|
       context "when '#{jp}' given" do
         let(:text) { jp }
         it "should return '#{result}' for '#{jp}'" do
