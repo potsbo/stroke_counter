@@ -34,11 +34,11 @@ module StrokeCounter
       end
 
       def compatible_patterns(input: '', patterns: @table)
-        patterns.select{ |pattern| input.start_with?(pattern[:output].to_s) && pattern[:output].present?}
+        patterns.select { |pattern| input.start_with?(pattern[:output].to_s) && pattern[:output].present? }
       end
 
       def best_score_pattern(input: '', patterns: @table)
-        patterns.max_by{ |pattern| pattern[:efficiency] }
+        patterns.max_by { |pattern| pattern[:efficiency] }
       end
 
       def best_pattern_for(input: '', patterns: @table)
@@ -64,7 +64,7 @@ module StrokeCounter
 
       def compatible_with_next(input, addition)
         return true if input.empty?
-        compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s}
+        compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s }
       end
     end
   end
