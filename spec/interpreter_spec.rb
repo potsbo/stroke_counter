@@ -5,16 +5,16 @@ describe StrokeCounter::Typist::Brain::Interpreter do
   let(:interpreter) { klass.new }
 
   describe '.to_katakana' do
-    let(:text) { "片仮名" }
+    let(:text) { '片仮名' }
     let(:kana) { interpreter.to_katakana(text) }
 
     test_cases = {
-      "片仮名" => 'カタカナ',
-      "今日の新聞は分厚い" => 'キョウノシンブンハブアツイ',
-      "部分分数分解" => 'ブブンブンスウブンカイ',
-      "重箱が重なっている" => 'ジュウバコガカサナッテイル',
-      "カタカナ" => 'カタカナ',
-      "50個あります" => '50コアリマス',
+      '片仮名' => 'カタカナ',
+      '今日の新聞は分厚い' => 'キョウノシンブンハブアツイ',
+      '部分分数分解' => 'ブブンブンスウブンカイ',
+      '重箱が重なっている' => 'ジュウバコガカサナッテイル',
+      'カタカナ' => 'カタカナ',
+      '50個あります' => '50コアリマス',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do
@@ -27,11 +27,11 @@ describe StrokeCounter::Typist::Brain::Interpreter do
   end
 
   describe '.to_hiragana' do
-    let(:text) { "ヒラガナ" }
+    let(:text) { 'ヒラガナ' }
     let(:hira) { interpreter.to_hiragana(text) }
     test_cases = {
-      "ヒラガナ" => 'ひらがな',
-      "ワリトナガイカタカナ" => 'わりとながいかたかな',
+      'ヒラガナ' => 'ひらがな',
+      'ワリトナガイカタカナ' => 'わりとながいかたかな',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do
@@ -44,10 +44,10 @@ describe StrokeCounter::Typist::Brain::Interpreter do
   end
 
   describe '.yomi' do
-    let(:text) { "ヒラガナ" }
+    let(:text) { 'ヒラガナ' }
     let(:hira) { interpreter.yomi(text) }
     test_cases = {
-      "漢字とカタカナとひらがなが混ざった文" => 'かんじとかたかなとひらがながまざったぶん',
+      '漢字とカタカナとひらがなが混ざった文' => 'かんじとかたかなとひらがながまざったぶん',
     }
     test_cases.each do |jp,result|
       context "when '#{jp}' given" do
