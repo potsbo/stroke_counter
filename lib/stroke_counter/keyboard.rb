@@ -15,14 +15,14 @@ module StrokeCounter
 
     def has_key?(key, on: nil)
       case on
-        when :left
-          return @layout.left_side_keys.include?(key.to_sym)
-        when :right
-          return @layout.right_side_keys.include?(key.to_sym)
-        when nil
-          return @layout.keys.include?(key.to_sym)
-        else
-          return false
+      when :left
+        return @layout.left_side_keys.include?(key.to_sym)
+      when :right
+        return @layout.right_side_keys.include?(key.to_sym)
+      when nil
+        return @layout.keys.include?(key.to_sym)
+      else
+        return false
       end
     end
 
