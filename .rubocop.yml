@@ -4,3 +4,5 @@ TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
 FrozenStringLiteralComment:
   Enabled: false
+LineLength:
+  Max: 100
