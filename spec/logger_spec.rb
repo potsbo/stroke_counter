@@ -100,7 +100,7 @@ describe StrokeCounter::Keyboard::Logger do
     describe 'right hand' do
       let(:hand) { :right }
       it 'should include all fingers' do
-        expect(frequency).to include *%i(index middle ring little)
+        expect(frequency).to include :index, :middle, :ring, :little
       end
       context ' when right index finger used 5 times' do
         before do
@@ -113,7 +113,7 @@ describe StrokeCounter::Keyboard::Logger do
     end
     describe 'both hand' do
       it 'should return both right hand and left hand' do
-        expect(frequency.keys).to include *%i(right left)
+        expect(frequency.keys).to include :right, :left
       end
     end
   end
