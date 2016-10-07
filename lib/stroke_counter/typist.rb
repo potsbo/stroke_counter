@@ -3,7 +3,7 @@ require 'stroke_counter/typist/interpreter'
 require 'stroke_counter/typist/assessment'
 
 class StrokeCounter::Typist
-  VALID_MODE = %i(normal qwerty dvorak)
+  VALID_MODE = %i(normal qwerty dvorak).freeze
   attr_reader :mode, :keyboard, :logger
 
   def initialize(args = {})

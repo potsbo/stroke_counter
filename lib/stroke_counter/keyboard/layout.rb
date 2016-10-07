@@ -10,7 +10,7 @@ module StrokeCounter
           qwerty:  QWERTY,
           dvorak:  DVORAK,
           colemak: COLEMAK,
-      }
+      }.freeze
       attr_reader :name
       def initialize(args = {} )
         @name = ( args[:name].presence || DEFAULT ).downcase.to_sym
