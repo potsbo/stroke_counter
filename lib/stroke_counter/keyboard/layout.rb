@@ -36,7 +36,7 @@ module StrokeCounter
         @rows.flatten
       end
 
-      def has_key_on(key)
+      def key_on(key)
         key = key.to_sym
         return :left if left_side_keys.include? key
         return :right if right_side_keys.include? key
