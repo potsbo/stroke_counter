@@ -51,21 +51,31 @@ module StrokeCounter
       end
 
       def probabilities
-        hand   = nil
+        counts = hand_switch_counts
+        size   = hand_switch_candidate_counts
+        l2r = counts[:l2r] / size[:left].to_f  rescue nil
+        r2l = counts[:r2l] / size[:right].to_f rescue nil
+        { left_to_right: l2r, right_to_left: r2l }
+      end
+
+      def hand_switch_counts
         counts = { r2l: 0, l2r: 0 }
-        size   = { right: 0, left: 0, other: 0 }
+        hand   = nil
         @logs.each do |log|
           side = log[:hand]
           side = :other unless %i(right left).include? side
-          size[side] += 1
           counts[:r2l] += 1 if hand == :right && log[:hand] == :left
           counts[:l2r] += 1 if hand == :left  && log[:hand] == :right
           hand = side
         end
-        size[hand] -= 1 unless hand.nil?
-        l2r = counts[:l2r] / size[:left].to_f  rescue nil
-        r2l = counts[:r2l] / size[:right].to_f rescue nil
-        { left_to_right: l2r, right_to_left: r2l }
+        counts
+      end
+
+      def hand_switch_candidate_counts
+        size = { left: left_strokes.size, right: right_strokes.size }
+        hand = @logs.last[:hand] unless @logs.empty?
+        size[hand] -= 1 if hand
+        size
       end
     end
   end
