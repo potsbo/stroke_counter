@@ -92,11 +92,11 @@ describe StrokeCounter::Typist::Brain do
 
       describe 'normal sentence' do
         test_cases = {
-          'きょうはめちゃくちゃいいてんきってかんじですね。' => "cn,hametnacutnaytjcittec;zidesunel.",
-          'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => "gatturic.shocuhxd'c,hn,hatub'tnpl.",
-          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => "axshutaxhacamireberunobuturigacusha",
-          'きいはんとうってどこにあるの。' => "cyh;t,ttedoconiarunol.",
-          'ぶぶんぶんすうぶんかいってしってるかい' => "bubkbkspbkc'ttesitteruc'",
+          'きょうはめちゃくちゃいいてんきってかんじですね。' => 'cn,hametnacutnaytjcittec;zidesunel.',
+          'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => 'gatturic.shocuhxd\'c,hn,hatub\'tnpl.',
+          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => 'axshutaxhacamireberunobuturigacusha',
+          'きいはんとうってどこにあるの。' => 'cyh;t,ttedoconiarunol.',
+          'ぶぶんぶんすうぶんかいってしってるかい' => 'bubkbkspbkc\'ttesitteruc\'',
         }
         test_cases.each do |jp,en|
           context "when '#{jp}' given" do
