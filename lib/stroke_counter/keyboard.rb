@@ -5,7 +5,7 @@ require 'stroke_counter/keyboard/logger'
 
 module StrokeCounter
   class Keyboard
-    def initialize(args = {} )
+    def initialize(args = {})
       @layout = Layout.new(name: args[:name])
     end
 
