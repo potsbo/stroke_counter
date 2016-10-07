@@ -23,9 +23,9 @@ module StrokeCounter
         keys = []
         until input.empty?
           begin
-            pat   = best_pattern_for(input: input)
-          rescue => e
-            pat   = { input: input[0], output: input[0] }
+            pat = best_pattern_for(input: input)
+          rescue
+            pat = { input: input[0], output: input[0] }
           end
           keys << pat[:input].to_s[@rest.to_s.size..-1] if pat
           input = input[pat[:output].size..-1]
