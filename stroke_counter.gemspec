@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Shimpei Otsubo']
   spec.email         = ['potsbo@gmail.com']
 
-  spec.summary       = %q{Keyboard stroke counter for each key to evaluate a certain keyboard layout.}
-  spec.description   = %q{Keyboard stroke counter for each key to evaluate a certain keyboard layout.}
+  spec.summary       = 'Keyboard stroke counter for each key to evaluate a certain keyboard layout.'
+  spec.description   = 'Keyboard stroke counter for each key to evaluate a certain keyboard layout.'
   spec.homepage      = 'https://github.com/potsbo/stroke_counter'
   spec.license       = 'MIT'
 
