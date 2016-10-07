@@ -16,7 +16,7 @@ describe StrokeCounter::Typist::Brain do
         'なにぬねの' => 'naninuneno',
         'はひふへほ' => 'hahihuheho',
         'まみむめも' => 'mamimumemo',
-        'やゆよ'    => 'yayuyo',
+        'やゆよ' => 'yayuyo',
         'らりるれろ' => 'rarirurero',
         'わをん' => 'wawon',
       }
@@ -32,11 +32,11 @@ describe StrokeCounter::Typist::Brain do
 
     describe 'contracted sounds' do
       test_cases = {
-        'きゃきゅきょ'      => 'kyakyukyo',
+        'きゃきゅきょ' => 'kyakyukyo',
         'きゃききゅきぇきょ' => 'kyakikyukyekyo',
-        'しゃしゅしょ'      => 'syasyusyo',
+        'しゃしゅしょ' => 'syasyusyo',
         'しゃししゅしぇしょ' => 'syasisyusyesyo',
-        'ちゃちゅちょ'      => 'tyatyutyo',
+        'ちゃちゅちょ' => 'tyatyutyo',
         'ちゃちちゅちぇちょ' => 'tyatityutyetyo',
       }
       test_cases.each do |jp, en|
@@ -75,10 +75,10 @@ describe StrokeCounter::Typist::Brain do
           'なにぬねの' => 'naninuneno',
           'はひふへほ' => 'hahihuheho',
           'まみむめも' => 'mamimumemo',
-          'やゆよ'    => 'fafufo',
+          'やゆよ' => 'fafufo',
           'らりるれろ' => 'rarirurero',
-          'わをん'    => 'wawq',
-          'あんぱん'    => ';v;',
+          'わをん' => 'wawq',
+          'あんぱん' => ';v;',
         }
         test_cases.each do |jp, en|
           context "when '#{jp}' given" do
