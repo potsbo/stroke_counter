@@ -1,5 +1,5 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "stroke_counter"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'stroke_counter'
 
 require 'simplecov'
 SimpleCov.start
