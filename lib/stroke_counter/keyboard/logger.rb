@@ -34,7 +34,7 @@ class StrokeCounter::Keyboard::Logger
   end
 
   def finger_frequency(hand: nil)
-    return { left: finger_frequency(hand: :left), right: finger_frequency(hand: :right)} if hand.nil?
+    return { left: finger_frequency(hand: :left), right: finger_frequency(hand: :right) } unless hand
     counts = { index: 0, middle: 0, ring: 0, little: 0 }
     hand_strokes(hand).each do |stroke|
       finger = stroke[:finger]
