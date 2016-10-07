@@ -1,4 +1,9 @@
-# StrokeCounter [![Build Status](https://travis-ci.org/potsbo/stroke_counter.svg?branch=master)](https://travis-ci.org/potsbo/stroke_counter)
+# StrokeCounter
+
+[![Build Status](https://travis-ci.org/potsbo/stroke_counter.svg?branch=master)](https://travis-ci.org/potsbo/stroke_counter)
+[![Code Climate](https://codeclimate.com/github/potsbo/stroke_counter/badges/gpa.svg)](https://codeclimate.com/github/potsbo/stroke_counter)
+[![codecov](https://codecov.io/gh/potsbo/stroke_counter/branch/master/graph/badge.svg)](https://codecov.io/gh/potsbo/stroke_counter)
+
 
 StrokeCounter can count and analyze keyboard strokes.
 It is useful to have quantitative evaluation for a keyboard layout.
