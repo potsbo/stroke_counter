@@ -5,7 +5,7 @@ describe StrokeCounter::Typist::Brain do
   let(:mode) { :normal }
   describe '#to_keys' do
     let(:keys) { brain.to_keys(input) }
-    let(:input) { "" }
+    let(:input) { '' }
 
     describe 'one to one patterns' do
       test_cases = {
@@ -68,7 +68,7 @@ describe StrokeCounter::Typist::Brain do
       let(:mode) { :anpan }
       describe 'one to one patterns' do
         test_cases = {
-          'あいうえお' => "'ueo",
+          'あいうえお' => '\'ueo',
           'かきくけこ' => 'cacicuceco',
           'さしすせそ' => 'sasisuseso',
           'たちつてと' => 'tatituteto',

@@ -5,7 +5,7 @@ module StrokeCounter::Typist::Assessment
   end
 
   def text_file(filename: nil)
-    File.new(path_to_file(filename), "r")
+    File.new(path_to_file(filename), 'r')
   end
 
   def assess(filename: nil)
