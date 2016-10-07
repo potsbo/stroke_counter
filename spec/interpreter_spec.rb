@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe StrokeCounter::Typist::Brain::Interpreter do
-  let(:klass) { Struct.new(nil) { include StrokeCounter::Typist::Brain::Interpreter} }
+  let(:klass) { Struct.new(nil) { include StrokeCounter::Typist::Brain::Interpreter } }
   let(:interpreter) { klass.new }
 
   describe '.to_katakana' do
