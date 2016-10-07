@@ -63,4 +63,3 @@ module StrokeCounter
     end
   end
 end
-

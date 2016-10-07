@@ -25,4 +25,3 @@ describe StrokeCounter::Typist::Assessment do
     end
   end
 end
-
