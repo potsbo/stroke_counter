@@ -90,9 +90,11 @@ describe StrokeCounter::Keyboard do
         end
       end
 
-      { left:  %i(q w e r t a s d f g z x c v b),
+      hands = {
+        left:  %i(q w e r t a s d f g z x c v b),
         right: %i(y u i o p h j k l ; n m , . /),
-      }.each do |side, keys|
+      }
+      hands.each do |side, keys|
         keys.each do |key|
           describe "#{side} side keys" do
             it "should have #{key} on the #{side}" do
