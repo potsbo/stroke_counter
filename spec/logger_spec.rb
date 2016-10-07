@@ -76,7 +76,7 @@ describe StrokeCounter::Keyboard::Logger do
       before do
         100.times do
           2.times { logger.add_log( { hand: :right, finger: :index } ) }
-          logger.add_log( { hand: :left, finger: :index } )
+          logger.add_log({ hand: :left, finger: :index })
         end
       end
       it 'should be 0.5 to change hand from right to left' do
