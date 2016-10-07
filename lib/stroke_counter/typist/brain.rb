@@ -48,7 +48,7 @@ module StrokeCounter
           compatible_with_next(input[pattern[:output].size..-1].to_s, pattern[:addition].to_s)
         end
         pat = pats.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
-        @rest = pat[:addition] rescue nil
+        @rest = pat.nil? ? nil : pat[:addition]
         raise NoCompatiblePattern, "No compatible pattern for '#{input[0]}'" if pat.nil?
         pat
       end
