@@ -61,7 +61,7 @@ module StrokeCounter
         input_size  = 0
         patterns.compact.each do |pattern|
           input_size  += pattern[:input].size
-          output_size += pattern[:input].size
+          output_size += pattern[:output].size
         end
         output_size / input_size.to_f
       end
