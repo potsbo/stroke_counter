@@ -11,10 +11,10 @@ module StrokeCounter
 
         conf = CONF[@mode]
 
-        @table = Anpan.new(conf).table.map { |pat|
+        @table = Anpan.new(conf).table
+        @table.each do |pat|
           pat[:efficiency] = pat[:output].to_s.size / pat[:input].to_s.size.to_f
-          pat
-        }
+        end
       end
 
       def to_keys(input)
