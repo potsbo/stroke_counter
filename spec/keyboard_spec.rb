@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe StrokeCounter::Keyboard do
   let(:args) { {} }
@@ -35,34 +35,34 @@ describe StrokeCounter::Keyboard do
     end
   end
 
-  describe '#has_key?' do
+  describe '#key?' do
     it 'should return true for "q"' do
-      expect( keyboard.has_key?('q') ).to be(true)
+      expect(keyboard.key?('q')).to be(true)
     end
 
     it 'should be false q on the right side' do
-      expect( keyboard.has_key?('q', on: :right)).to be(false)
+      expect(keyboard.key?('q', on: :right)).to be(false)
     end
 
     it 'should be false :q (symbol) on the right side' do
-      expect( keyboard.has_key?(:q, on: :right)).to be(false)
+      expect(keyboard.key?(:q, on: :right)).to be(false)
     end
 
     describe 'key :f' do
       it 'should return true for :f (symbol) on the right side' do
-        expect( keyboard.has_key?(:f, on: :right) ).to be(false)
+        expect(keyboard.key?(:f, on: :right)).to be(false)
       end
       it 'should return true for :f (symbol) on the left side' do
-        expect( keyboard.has_key?(:f, on: :left) ).to be(true)
+        expect(keyboard.key?(:f, on: :left)).to be(true)
       end
     end
 
     describe 'key :h' do
       it 'should return true for :h (symbol) on the right side' do
-        expect( keyboard.has_key?(:h, on: :right) ).to be(true)
+        expect(keyboard.key?(:h, on: :right)).to be(true)
       end
       it 'should return true for :h (symbol) on the right side' do
-        expect( keyboard.has_key?(:h, on: :left) ).to be(false)
+        expect(keyboard.key?(:h, on: :left)).to be(false)
       end
     end
   end
@@ -90,9 +90,11 @@ describe StrokeCounter::Keyboard do
         end
       end
 
-      { left:  %i(q w e r t a s d f g z x c v b),
+      hands = {
+        left:  %i(q w e r t a s d f g z x c v b),
         right: %i(y u i o p h j k l ; n m , . /),
-      }.each do |side, keys|
+      }
+      hands.each do |side, keys|
         keys.each do |key|
           describe "#{side} side keys" do
             it "should have #{key} on the #{side}" do

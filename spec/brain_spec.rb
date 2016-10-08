@@ -5,7 +5,7 @@ describe StrokeCounter::Typist::Brain do
   let(:mode) { :normal }
   describe '#to_keys' do
     let(:keys) { brain.to_keys(input) }
-    let(:input) { "" }
+    let(:input) { '' }
 
     describe 'one to one patterns' do
       test_cases = {
@@ -16,11 +16,11 @@ describe StrokeCounter::Typist::Brain do
         'なにぬねの' => 'naninuneno',
         'はひふへほ' => 'hahihuheho',
         'まみむめも' => 'mamimumemo',
-        'やゆよ'    => 'yayuyo',
+        'やゆよ' => 'yayuyo',
         'らりるれろ' => 'rarirurero',
         'わをん' => 'wawon',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -32,14 +32,14 @@ describe StrokeCounter::Typist::Brain do
 
     describe 'contracted sounds' do
       test_cases = {
-        'きゃきゅきょ'      => 'kyakyukyo',
+        'きゃきゅきょ' => 'kyakyukyo',
         'きゃききゅきぇきょ' => 'kyakikyukyekyo',
-        'しゃしゅしょ'      => 'syasyusyo',
+        'しゃしゅしょ' => 'syasyusyo',
         'しゃししゅしぇしょ' => 'syasisyusyesyo',
-        'ちゃちゅちょ'      => 'tyatyutyo',
+        'ちゃちゅちょ' => 'tyatyutyo',
         'ちゃちちゅちぇちょ' => 'tyatityutyetyo',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -54,7 +54,7 @@ describe StrokeCounter::Typist::Brain do
         'きょうはめちゃくちゃいいてんきってかんじですね。' => 'kyouhametyakutyaiitenkittekanzidesune.',
         'にっぽんこくけんぽう' => 'nipponkokukenpou',
       }
-      test_cases.each do |jp,en|
+      test_cases.each do |jp, en|
         context "when '#{jp}' given" do
           let(:input) { jp }
           it "should return #{en}" do
@@ -68,19 +68,19 @@ describe StrokeCounter::Typist::Brain do
       let(:mode) { :anpan }
       describe 'one to one patterns' do
         test_cases = {
-          'あいうえお' => "'ueo",
+          'あいうえお' => '\'ueo',
           'かきくけこ' => 'cacicuceco',
           'さしすせそ' => 'sasisuseso',
           'たちつてと' => 'tatituteto',
           'なにぬねの' => 'naninuneno',
           'はひふへほ' => 'hahihuheho',
           'まみむめも' => 'mamimumemo',
-          'やゆよ'    => 'fafufo',
+          'やゆよ' => 'fafufo',
           'らりるれろ' => 'rarirurero',
-          'わをん'    => 'wawq',
-          'あんぱん'    => ';v;',
+          'わをん' => 'wawq',
+          'あんぱん' => ';v;',
         }
-        test_cases.each do |jp,en|
+        test_cases.each do |jp, en|
           context "when '#{jp}' given" do
             let(:input) { jp }
             it "should return #{en}" do
@@ -92,13 +92,13 @@ describe StrokeCounter::Typist::Brain do
 
       describe 'normal sentence' do
         test_cases = {
-          'きょうはめちゃくちゃいいてんきってかんじですね。' => "cn,hametnacutnaytjcittec;zidesunel.",
-          'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => "gatturic.shocuhxd'c,hn,hatub'tnpl.",
-          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => "axshutaxhacamireberunobuturigacusha",
-          'きいはんとうってどこにあるの。' => "cyh;t,ttedoconiarunol.",
-          'ぶぶんぶんすうぶんかいってしってるかい' => "bubkbkspbkc'ttesitteruc'",
+          'きょうはめちゃくちゃいいてんきってかんじですね。' => 'cn,hametnacutnaytjcittec;zidesunel.',
+          'がっつりけいしょくひんだいこうひょうはつばいちゅう。' => 'gatturic.shocuhxd\'c,hn,hatub\'tnpl.',
+          'あいんしゅたいんはかみれべるのぶつりがくしゃ' => 'axshutaxhacamireberunobuturigacusha',
+          'きいはんとうってどこにあるの。' => 'cyh;t,ttedoconiarunol.',
+          'ぶぶんぶんすうぶんかいってしってるかい' => 'bubkbkspbkc\'ttesitteruc\'',
         }
-        test_cases.each do |jp,en|
+        test_cases.each do |jp, en|
           context "when '#{jp}' given" do
             let(:input) { jp }
             it "should return #{en}" do

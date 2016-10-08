@@ -7,13 +7,13 @@ module StrokeCounter
     class Layout
       DEFAULT = :qwerty
       PRESETS = {
-          qwerty:  QWERTY,
-          dvorak:  DVORAK,
-          colemak: COLEMAK,
-      }
+        qwerty:  QWERTY,
+        dvorak:  DVORAK,
+        colemak: COLEMAK,
+      }.freeze
       attr_reader :name
-      def initialize(args = {} )
-        @name = ( args[:name].presence || DEFAULT ).downcase.to_sym
+      def initialize(args = {})
+        @name = (args[:name].presence || DEFAULT).downcase.to_sym
         initialize_with_name
       end
 
@@ -36,7 +36,7 @@ module StrokeCounter
         @rows.flatten
       end
 
-      def has_key_on(key)
+      def key_on(key)
         key = key.to_sym
         return :left if left_side_keys.include? key
         return :right if right_side_keys.include? key
@@ -63,4 +63,3 @@ module StrokeCounter
     end
   end
 end
-

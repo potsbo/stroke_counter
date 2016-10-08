@@ -6,4 +6,4 @@ gem 'activesupport'
 gem 'anpan', github: 'potsbo/anpan'
 gem 'natto'
 
-gem 'codecov', :require => false, :group => :test
+gem 'codecov', require: false, group: :test
