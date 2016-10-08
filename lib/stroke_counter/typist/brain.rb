@@ -6,6 +6,7 @@ module StrokeCounter
         google: Anpan::An::GOOGLE_JAPANESE,
         normal: Anpan::An::GOOGLE_JAPANESE,
       }.freeze
+
       def initialize(mode: :normal)
         @mode = CONF.keys.include?(mode) ? mode : :normal
 
@@ -43,8 +44,7 @@ module StrokeCounter
       end
 
       def candidate_patterns(input: '', patterns: @table)
-        pats = patterns.select { |pattern| pattern[:input].to_s.start_with? @rest.to_s }
-        pats = compatible_patterns(input: input, patterns: pats)
+        pats = compatible_patterns(input: input, patterns: patterns)
         pats.select do |pattern|
           compatible_with_next(input[pattern[:output].size..-1].to_s, pattern[:addition].to_s)
         end
