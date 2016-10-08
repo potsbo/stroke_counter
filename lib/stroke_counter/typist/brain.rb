@@ -36,14 +36,18 @@ module StrokeCounter
       end
 
       def best_pattern_for(input: '', patterns: @table)
-        pats = patterns.select { |pattern| pattern[:input].to_s.start_with? @rest.to_s }
-        pats = compatible_patterns(input: input, patterns: pats)
-        pats = pats.select do |pattern|
-          compatible_with_next(input[pattern[:output].size..-1].to_s, pattern[:addition].to_s)
-        end
-        pat = pats.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
+        candidates = candidate_patterns(input: input, patterns: patterns)
+        pat = candidates.max_by { |pattern| efficiency_with_next(input: input, pattern: pattern) }
         @rest = pat.nil? ? nil : pat[:addition]
         pat
+      end
+
+      def candidate_patterns(input: '', patterns: @table)
+        pats = patterns.select { |pattern| pattern[:input].to_s.start_with? @rest.to_s }
+        pats = compatible_patterns(input: input, patterns: pats)
+        pats.select do |pattern|
+          compatible_with_next(input[pattern[:output].size..-1].to_s, pattern[:addition].to_s)
+        end
       end
 
       def efficiency_with_next(input: '', pattern: {})
