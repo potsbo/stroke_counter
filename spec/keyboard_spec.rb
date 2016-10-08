@@ -50,19 +50,19 @@ describe StrokeCounter::Keyboard do
 
     describe 'key :f' do
       it 'should return true for :f (symbol) on the right side' do
-        expect(keyboard.has_key?(:f, on: :right)).to be(false)
+        expect(keyboard.key?(:f, on: :right)).to be(false)
       end
       it 'should return true for :f (symbol) on the left side' do
-        expect(keyboard.has_key?(:f, on: :left)).to be(true)
+        expect(keyboard.key?(:f, on: :left)).to be(true)
       end
     end
 
     describe 'key :h' do
       it 'should return true for :h (symbol) on the right side' do
-        expect(keyboard.has_key?(:h, on: :right)).to be(true)
+        expect(keyboard.key?(:h, on: :right)).to be(true)
       end
       it 'should return true for :h (symbol) on the right side' do
-        expect(keyboard.has_key?(:h, on: :left)).to be(false)
+        expect(keyboard.key?(:h, on: :left)).to be(false)
       end
     end
   end
