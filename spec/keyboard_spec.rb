@@ -35,17 +35,17 @@ describe StrokeCounter::Keyboard do
     end
   end
 
-  describe '#has_key?' do
+  describe '#key?' do
     it 'should return true for "q"' do
-      expect(keyboard.has_key?('q')).to be(true)
+      expect(keyboard.key?('q')).to be(true)
     end
 
     it 'should be false q on the right side' do
-      expect(keyboard.has_key?('q', on: :right)).to be(false)
+      expect(keyboard.key?('q', on: :right)).to be(false)
     end
 
     it 'should be false :q (symbol) on the right side' do
-      expect(keyboard.has_key?(:q, on: :right)).to be(false)
+      expect(keyboard.key?(:q, on: :right)).to be(false)
     end
 
     describe 'key :f' do

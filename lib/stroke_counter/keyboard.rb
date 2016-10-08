@@ -13,7 +13,7 @@ module StrokeCounter
       @layout.name
     end
 
-    def has_key?(key, on: nil)
+    def key?(key, on: nil)
       case on
       when :left
         return @layout.left_side_keys.include?(key.to_sym)
