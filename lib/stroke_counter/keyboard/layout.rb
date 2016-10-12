@@ -71,7 +71,7 @@ module StrokeCounter
       end
 
       def row_index_by_key(key)
-        @rows.index{|row| row.index(key.to_sym) }
+        @rows.index { |row| row.index(key.to_sym) }
       end
     end
   end
