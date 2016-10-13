@@ -18,11 +18,9 @@ describe StrokeCounter::Keyboard::Logger do
 
   describe '#analyze' do
     let(:result) { logger.analyze }
+    let(:hands) { result[:hands] }
     it 'should return a Hash' do
-      expect(logger.analyze).to be_a Hash
-    end
-    it 'should return a Hash' do
-      expect(logger.analyze.keys).to include :left, :right
+      expect(result).to be_a Hash
     end
 
     context 'when 10 right hand stroke were logged' do
@@ -30,17 +28,17 @@ describe StrokeCounter::Keyboard::Logger do
         10.times { |_| logger.add_log(hand: :right, finger: :index) }
       end
       it 'should return 1 for right hand ratio' do
-        expect(result[:right]).to eq(1)
+        expect(hands[:right]).to eq(1)
       end
       it 'should return 0 for left hand ratio' do
-        expect(result[:left]).to eq(0)
+        expect(hands[:left]).to eq(0)
       end
     end
 
     context 'when no logs given' do
-      it 'should return nil for both hand ratio' do
-        expect(result[:left]).to be_nil
-        expect(result[:right]).to be_nil
+      it 'should return NaN for both hand ratio' do
+        expect(hands[:left]).to be_nan
+        expect(hands[:right]).to be_nan
       end
     end
   end
