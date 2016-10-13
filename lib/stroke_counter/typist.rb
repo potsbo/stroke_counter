@@ -26,7 +26,7 @@ module StrokeCounter
     end
 
     def type_keys(str)
-      str.to_s.downcase.each_char { |c| type_key(c.to_sym) }
+      str.downcase.each_char { |c| type_key(c.to_sym) }
       self
     end
 
