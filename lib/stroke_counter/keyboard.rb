@@ -27,7 +27,7 @@ module StrokeCounter
     end
 
     def type_feedback(key)
-      { hand: @layout.key_on(key), finger: @layout.finger_by_key(key), key: key }
+      { hand: @layout.key_on(key), finger: @layout.finger_by_key(key), key: key, row: @layout.row_by_key(key) }
     end
   end
 end
