@@ -17,13 +17,16 @@ module StrokeCounter
       end
 
       def analyze
-        return { left: nil, right: nil } if @logs.empty?
-        logs_size = @logs.size.to_f
         {
-          left: left_strokes.size / logs_size, right: right_strokes.size / logs_size,
+          hands: hands_ratio,
           probabilities: probabilities, keys_size: @logs.size, finger_frequency: finger_frequency,
           rows: rows_summary
         }
+      end
+
+      def hands_ratio
+        logs_size = @logs.size.to_f
+        { left: left_strokes.size / logs_size, right: right_strokes.size / logs_size }
       end
 
       # hand strokes
