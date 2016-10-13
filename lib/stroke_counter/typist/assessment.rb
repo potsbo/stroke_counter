@@ -4,7 +4,8 @@ module StrokeCounter
       FILENAMES = {
         en: 'constitution_of_the_united_states.txt',
         ja: 'constitution_of_japan.txt',
-      }
+      }.freeze
+
       def path_to_file(filename = nil)
         filename ||= 'constitution_of_japan.txt'
         File.join 'lib', 'stroke_counter', 'texts', filename
