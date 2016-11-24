@@ -32,8 +32,8 @@ describe StrokeCounter::Keyboard::Layout do
     end
   end
 
-  describe '#has_key_on' do
-    let(:side) { layout.has_key_on key }
+  describe '#key_on' do
+    let(:side) { layout.key_on key }
     let(:key) { :a }
     it 'should return right or left' do
       expect(side).to be :left
@@ -42,8 +42,8 @@ describe StrokeCounter::Keyboard::Layout do
 
   describe '#finger_by_key' do
     key_fingers = {
-        a: :little, s: :ring,  d: :middle, f: :index,   g: :index,
-        h: :index,  j: :index, k: :middle, l: :ring,  ';': :little
+      a: :little, s: :ring,  d: :middle, f: :index, g: :index,
+      h: :index,  j: :index, k: :middle, l: :ring, ';': :little
     }
     key_fingers.each do |key, finger|
       it "should return #{finger} for #{key}" do
@@ -70,8 +70,8 @@ describe StrokeCounter::Keyboard::Layout do
   describe '#index_by_key' do
     context 'when a-z given' do
       (:a..:z).each do |c|
-        it "should return Fixnum index for #{c}" do
-          expect(layout.index_by_key(c)).to be_a Fixnum
+        it "should return Integer index for #{c}" do
+          expect(layout.index_by_key(c)).to be_a Integer
         end
       end
     end

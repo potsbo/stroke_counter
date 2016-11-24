@@ -1,16 +1,27 @@
-module StrokeCounter::Typist::Assessment
-  def path_to_file
-    File.join 'lib', 'stroke_counter', 'texts', 'constitution_of_japan.txt'
-  end
+module StrokeCounter
+  class Typist
+    module Assessment
+      FILENAMES = {
+        en: 'constitution_of_the_united_states.txt',
+        ja: 'constitution_of_japan.txt',
+      }.freeze
 
-  def text_file
-    File.new(path_to_file, "r")
-  end
+      def path_to_file(filename = nil)
+        filename ||= 'constitution_of_japan.txt'
+        File.join 'lib', 'stroke_counter', 'texts', filename
+      end
 
-  def assess
-    text_file.each_line do |line|
-      type_language(line)
+      def text_file(filename: nil)
+        File.new(path_to_file(filename), 'r')
+      end
+
+      def assess(filename: nil, lang: nil)
+        filename = FILENAMES[lang.to_sym] if lang
+        text_file(filename: filename).each_line do |line|
+          type_language(line)
+        end
+        result
+      end
     end
-    result
   end
 end

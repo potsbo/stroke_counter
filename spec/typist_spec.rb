@@ -6,14 +6,14 @@ describe StrokeCounter::Typist do
 
   describe '#type_language' do
     it 'should respond to Japanese' do
-      expect{typist.type_language('きょうはいいてんきですね。')}.not_to raise_error
+      expect { typist.type_language('きょうはいいてんきですね。') }.not_to raise_error
     end
   end
 
   describe '#type_keys' do
     let(:string) { 'abcdefghijklmnopqrstuvwxyz' }
     it 'should respond to alphabets' do
-      expect{ typist.type_keys(string) }.not_to raise_error
+      expect { typist.type_keys(string) }.not_to raise_error
     end
   end
 

@@ -8,6 +8,14 @@ describe StrokeCounter::Typist::Assessment do
     it 'should return string' do
       expect(assessment.path_to_file).to be_a String
     end
+    it 'should return path to constitution_of_japan.txt' do
+      expect(assessment.path_to_file).to end_with 'constitution_of_japan.txt'
+    end
+    context 'when some_file_name given' do
+      it 'should return path to some_file_name' do
+        expect(assessment.path_to_file('some_file_name')).to end_with 'some_file_name'
+      end
+    end
   end
 
   describe '#text_file' do
@@ -17,4 +25,3 @@ describe StrokeCounter::Typist::Assessment do
     end
   end
 end
-

@@ -15,7 +15,7 @@ module StrokeCounter
         end
 
         def to_hiragana(input)
-          input.tr('ァ-ン','ぁ-ん')
+          input.tr('ァ-ン', 'ぁ-ん')
         end
 
         def yomi(input)

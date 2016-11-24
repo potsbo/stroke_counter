@@ -12,35 +12,33 @@ describe StrokeCounter::Keyboard::Logger do
     end
 
     it 'should change log size' do
-      expect{ logger.add_log({}) }.to change{ logger.logs.size }.by(1)
+      expect { logger.add_log({}) }.to change { logger.logs.size }.by(1)
     end
   end
 
   describe '#analyze' do
     let(:result) { logger.analyze }
+    let(:hands) { result[:hands] }
     it 'should return a Hash' do
-      expect(logger.analyze).to be_a Hash
-    end
-    it 'should return a Hash' do
-      expect(logger.analyze.keys).to include :left, :right
+      expect(result).to be_a Hash
     end
 
     context 'when 10 right hand stroke were logged' do
       before do
-        10.times { |_| logger.add_log({ hand: :right, finger: :index }) }
+        10.times { |_| logger.add_log(hand: :right, finger: :index) }
       end
       it 'should return 1 for right hand ratio' do
-        expect(result[:right]).to eq(1)
+        expect(hands[:right]).to eq(1)
       end
       it 'should return 0 for left hand ratio' do
-        expect(result[:left]).to eq(0)
+        expect(hands[:left]).to eq(0)
       end
     end
 
     context 'when no logs given' do
-      it 'should return nil for both hand ratio' do
-        expect(result[:left]).to be_nil
-        expect(result[:right]).to be_nil
+      it 'should return NaN for both hand ratio' do
+        expect(hands[:left]).to be_nan
+        expect(hands[:right]).to be_nan
       end
     end
   end
@@ -52,7 +50,7 @@ describe StrokeCounter::Keyboard::Logger do
     end
     context 'when left index finger used 100 times' do
       before do
-        100.times { logger.add_log( { hand: :left, finger: :index} ) }
+        100.times { logger.add_log(hand: :left, finger: :index) }
       end
       it 'should be 0 to change left to right' do
         expect(result[:left_to_right]).to be_zero
@@ -62,8 +60,8 @@ describe StrokeCounter::Keyboard::Logger do
     context 'when alternate right and left typed' do
       before do
         100.times do
-          logger.add_log({ hand: :left, finger: :index})
-          logger.add_log({ hand: :right, finger: :index})
+          logger.add_log(hand: :left, finger: :index)
+          logger.add_log(hand: :right, finger: :index)
         end
       end
       it 'should be 1 to change left to right' do
@@ -75,8 +73,8 @@ describe StrokeCounter::Keyboard::Logger do
     context 'when 2 right keys and one 1 left key repeated' do
       before do
         100.times do
-          2.times { logger.add_log( { hand: :right, finger: :index } ) }
-          logger.add_log( { hand: :left, finger: :index } )
+          2.times { logger.add_log(hand: :right, finger: :index) }
+          logger.add_log(hand: :left, finger: :index)
         end
       end
       it 'should be 0.5 to change hand from right to left' do
@@ -86,10 +84,34 @@ describe StrokeCounter::Keyboard::Logger do
 
     context 'when nil hand given' do
       before do
-        logger.add_log( { hand: nil, finger: nil } )
+        logger.add_log(hand: nil, finger: nil)
       end
       it 'should not raise error' do
-        expect{ logger.probabilities }.not_to raise_error
+        expect { logger.probabilities }.not_to raise_error
+      end
+    end
+  end
+
+  describe '#finger_frequency' do
+    let(:hand) { nil }
+    let(:frequency) { logger.finger_frequency(hand: hand) }
+    describe 'right hand' do
+      let(:hand) { :right }
+      it 'should include all fingers' do
+        expect(frequency).to include :index, :middle, :ring, :little
+      end
+      context ' when right index finger used 5 times' do
+        before do
+          5.times { |_| logger.add_log(hand: :right, finger: :index) }
+        end
+        it 'should be 5' do
+          expect(frequency[:index]).to be 5
+        end
+      end
+    end
+    describe 'both hand' do
+      it 'should return both right hand and left hand' do
+        expect(frequency.keys).to include :right, :left
       end
     end
   end
