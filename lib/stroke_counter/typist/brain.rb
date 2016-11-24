@@ -3,8 +3,8 @@ module StrokeCounter
     class Brain
       class NoCompatiblePattern < StandardError; end
       CONF = {
-        anpan: Anpan::CONF,
-        google: Anpan::GOOGLE_JAPANESE,
+        anpan: Anpan::An::CONF,
+        google: Anpan::An::GOOGLE_JAPANESE,
       }
       def initialize(mode: :normal)
         @mode = mode
