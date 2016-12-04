@@ -16,13 +16,13 @@ module StrokeCounter
     def key?(key, on: nil)
       case on
       when :left
-        return @layout.left_side_keys.include?(key.to_sym)
+        @layout.left_side_keys.include?(key.to_sym)
       when :right
-        return @layout.right_side_keys.include?(key.to_sym)
+        @layout.right_side_keys.include?(key.to_sym)
       when nil
-        return @layout.keys.include?(key.to_sym)
+        @layout.keys.include?(key.to_sym)
       else
-        return false
+        false
       end
     end
 
