@@ -8,7 +8,21 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 task :assess do
-  results = StrokeCounter::Typist.all.map{|t| t.setting}
-  output = { results: results, metadata: {} }
-  puts JSON.pretty_generate(results)
+  results = []
+  languages = StrokeCounter::Typist::Assessment.languages
+  typists = StrokeCounter::Typist.all
+  size = languages.size * typists.size
+
+  cnt = 0
+  languages.each do |lang|
+    typists.each do |t|
+      cnt += 1
+      puts "#{cnt}/#{size}"
+      results << { setting: t.setting, result: t.assess(lang: lang) }
+    end
+  end
+  output = { results: results.flatten, metadata: {} }
+  File.open("result.json","w") do |f|
+    f.write(JSON.pretty_generate(output))
+  end
 end

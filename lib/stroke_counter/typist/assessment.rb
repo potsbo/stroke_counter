@@ -6,6 +6,10 @@ module StrokeCounter
         ja: 'constitution_of_japan.txt',
       }.freeze
 
+      def self.languages
+        FILENAMES.keys
+      end
+
       def path_to_file(filename = nil)
         filename ||= 'constitution_of_japan.txt'
         File.join 'lib', 'stroke_counter', 'texts', filename
