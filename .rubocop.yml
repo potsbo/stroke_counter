@@ -12,3 +12,6 @@ Style/AsciiComments:
   Enabled: false
 ClassLength:
   Max: 350
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
