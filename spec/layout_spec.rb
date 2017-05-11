@@ -17,7 +17,7 @@ describe StrokeCounter::Keyboard::Layout do
   end
 
   describe '#keys' do
-    settings = %i(qwerty dvorak colemak)
+    settings = %i[qwerty dvorak colemak]
     settings.each do |setting|
       context "when layout name is #{setting} " do
         let(:name) { setting }
@@ -53,7 +53,7 @@ describe StrokeCounter::Keyboard::Layout do
   end
 
   describe '#finger_by_index' do
-    fingers = %i(little ring middle index index index index middle ring little)
+    fingers = %i[little ring middle index index index index middle ring little]
     fingers.each_with_index do |finger, index|
       it "should return #{finger} for #{index}" do
         expect(layout.finger_by_index(index)).to be finger

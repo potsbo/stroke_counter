@@ -70,7 +70,7 @@ module StrokeCounter
         hand   = nil
         @logs.each do |log|
           side = log[:hand]
-          side = :other unless %i(right left).include? side
+          side = :other unless %i[right left].include? side
           counts[:r2l] += 1 if hand == :right && log[:hand] == :left
           counts[:l2r] += 1 if hand == :left  && log[:hand] == :right
           hand = side
@@ -87,7 +87,7 @@ module StrokeCounter
 
       def rows_summary
         hash = {}
-        %i(upper middle lower).each do |row|
+        %i[upper middle lower].each do |row|
           hash[row] = row_strokes(row).size / @logs.size.to_f
         end
         hash

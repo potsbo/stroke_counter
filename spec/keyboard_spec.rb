@@ -74,7 +74,7 @@ describe StrokeCounter::Keyboard do
       expect(feedback).to be_a Hash
     end
 
-    feedback_keys = %i(hand finger row key)
+    feedback_keys = %i[hand finger row key]
     it "should contain #{feedback_keys}" do
       expect(feedback.keys).to include(*feedback_keys)
     end
@@ -88,8 +88,8 @@ describe StrokeCounter::Keyboard do
       end
 
       hands = {
-        left:  %i(q w e r t a s d f g z x c v b),
-        right: %i(y u i o p h j k l ; n m , . /),
+        left:  %i[q w e r t a s d f g z x c v b],
+        right: %i[y u i o p h j k l ; n m , . /],
       }
       hands.each do |side, keys|
         keys.each do |key|
