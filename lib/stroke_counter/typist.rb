@@ -4,7 +4,7 @@ require 'stroke_counter/typist/assessment'
 
 module StrokeCounter
   class Typist
-    VALID_MODE = %i[normal qwerty dvorak].freeze
+    VALID_MODE = %i(normal qwerty dvorak).freeze
     attr_reader :mode, :keyboard, :logger
 
     def initialize(args = {})

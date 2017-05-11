@@ -58,7 +58,7 @@ module StrokeCounter
       def finger_by_index(index)
         return if index.nil?
         index = 9 - index if index > 4
-        %i[little ring middle index index][index]
+        %i(little ring middle index index)[index]
       end
 
       def row_by_key(key)
@@ -67,7 +67,7 @@ module StrokeCounter
 
       def row_by_row_index(index)
         return :other if index.nil?
-        %i[upper middle lower][index]
+        %i(upper middle lower)[index]
       end
 
       def row_index_by_key(key)
