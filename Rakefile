@@ -18,7 +18,7 @@ task :assess do
     typists.each do |t|
       cnt += 1
       puts "#{cnt}/#{size}"
-      results << { setting: t.setting, result: t.assess(lang: lang) }
+      results << { setting: t.setting.merge({lang: lang}), result: t.assess(lang: lang) }
     end
   end
   output = { results: results.flatten, metadata: {} }
