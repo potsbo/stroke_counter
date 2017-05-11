@@ -25,6 +25,10 @@ module StrokeCounter
       }.flatten
     end
 
+    def setting
+      { keyboard: @keyboard.name, brain: @brain.mode }
+    end
+
     include  Brain::Interpreter
     include  Assessment
 
