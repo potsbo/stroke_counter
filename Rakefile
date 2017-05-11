@@ -8,12 +8,12 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 task :assess do
-  results = []
   languages = StrokeCounter::Typist::Assessment.languages
   typists = StrokeCounter::Typist.all
   size = languages.size * typists.size
 
   cnt = 0
+  results = []
   languages.each do |lang|
     typists.each do |t|
       cnt += 1
