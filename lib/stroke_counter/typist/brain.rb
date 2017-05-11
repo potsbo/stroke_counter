@@ -1,6 +1,7 @@
 module StrokeCounter
   class Typist
     class Brain
+      attr_reader :mode
       CONF = {
         anpan: Anpan::An::CONF,
         google: Anpan::An::GOOGLE_JAPANESE,
