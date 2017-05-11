@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -eux
+
+RUBY_VERSION=`cat .ruby-version`
+
+if rbenv versions | grep $RUBY_VERSION > /dev/null 2>&1
+then
+  echo "ruby $RUBY_VERSION fonud."
+else
+  if rbenv install --list | grep $RUBY_VERSION > /dev/null 2>&1
+  then
+    echo "ruby-build can build ruby $RUBY_VERSION"
+  else
+    echo 'brew upgrade ruby-build'
+    brew upgrade ruby-build
+  fi
+
+  echo "ruby install $RUBY_VERSION"
+  rbenv install $RUBY_VERSION
+
+  echo "bundler install"
+  gem install bundler
+fi
+
+brew install mecab
+brew install mecab-ipadic
+
+bundle install
