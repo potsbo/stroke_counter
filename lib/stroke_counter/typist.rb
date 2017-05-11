@@ -17,6 +17,14 @@ module StrokeCounter
       @brain    = Brain.new(mode: args[:brain] || @mode)
     end
 
+    def self.all
+      Keyboard::Layout::PRESETS.keys.map {|k|
+        Brain::CONF.keys.reject{|c| c == :normal}.map{|b|
+          Typist.new(keyboard: k, brain: b)
+        }
+      }.flatten
+    end
+
     include  Brain::Interpreter
     include  Assessment
 
