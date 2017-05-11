@@ -7,5 +7,5 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 task :assess do
-  puts StrokeCounter::Typist.new.assess
+  puts StrokeCounter::Typist.all.map(&:assess)
 end
