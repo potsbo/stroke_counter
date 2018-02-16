@@ -3,9 +3,9 @@ module StrokeCounter
     class Brain
       attr_reader :mode
       CONF = {
-        anpan: Anpan::An::CONF,
-        google: Anpan::An::GOOGLE_JAPANESE,
-        normal: Anpan::An::GOOGLE_JAPANESE,
+        anpan:  'anpan.yaml',
+        google: 'google_japanese_input.yaml',
+        normal: 'google_japanese_input.yaml',
       }.freeze
 
       def initialize(mode: :normal)
