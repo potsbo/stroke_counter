@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/potsbo/anpan.git
-  revision: c43ddc53f438cc53df37243c63b63769b94d2520
+  revision: 5106745c850bf7377a7c25c1903d258f94916d60
   specs:
     anpan (0.1.0)
       activesupport (>= 5.0.0)
