@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/potsbo/anpan.git
-  revision: c0c0e5f0dac0408eed6d9a2e10a6c5a0d9a4c7b0
+  revision: 5781e37852481522dc689ecb0133f11869a1cc18
   specs:
     anpan (0.1.0)
       activesupport (>= 5.0.0)
@@ -15,7 +15,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.1.6)
+    activesupport (5.2.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
