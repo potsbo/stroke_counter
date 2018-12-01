@@ -17,14 +17,6 @@ module StrokeCounter
       @brain    = Brain.new(mode: args[:brain] || @mode)
     end
 
-    def self.all
-      Keyboard::Layout::PRESETS.keys.map do |k|
-        Brain::ROMAJI_TABLES.keys.reject { |c| c == :normal }.map do |b|
-          Typist.new(keyboard: k, brain: b)
-        end
-      end.flatten
-    end
-
     def setting
       { keyboard: @keyboard.name, brain: @brain.mode }
     end

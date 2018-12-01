@@ -9,7 +9,13 @@ task default: :spec
 
 task :assess do
   languages = StrokeCounter::Typist::Assessment.languages
-  typists = StrokeCounter::Typist.all
+
+  typists = StrokeCounter::Keyboard::Layout::PRESETS.keys.map do |k|
+    StrokeCounter::Typist::Brain::ROMAJI_TABLES.keys.reject { |c| c == :normal }.map do |b|
+      StrokeCounter::Typist.new(keyboard: k, brain: b)
+    end
+  end.flatten
+
   size = languages.size * typists.size
 
   cnt = 0

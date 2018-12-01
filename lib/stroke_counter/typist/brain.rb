@@ -5,7 +5,6 @@ module StrokeCounter
       ROMAJI_TABLES = {
         anpan:  'anpan.yaml',
         google: 'google_japanese_input.yaml',
-        normal: 'google_japanese_input.yaml',
       }.freeze
 
       def initialize(mode: :normal)
