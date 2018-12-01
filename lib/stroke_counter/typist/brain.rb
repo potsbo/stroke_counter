@@ -9,7 +9,7 @@ module StrokeCounter
       }.freeze
 
       def initialize(mode: :normal)
-        @mode = CONF.keys.include?(mode) ? mode : :normal
+        @mode = CONF.key?(mode) ? mode : :normal
 
         conf = CONF[@mode]
 
