@@ -28,6 +28,8 @@ module StrokeCounter
         keys.join
       end
 
+      private
+
       def compatible_patterns(input: '', patterns: @table)
         patterns.select { |pattern| input.start_with?(pattern[:output].to_s) && pattern[:output].present? }
       end

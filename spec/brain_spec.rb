@@ -109,12 +109,4 @@ describe StrokeCounter::Typist::Brain do
       end
     end
   end
-
-  describe '#compatible_with_next' do
-    context 'when "っぽん" given' do
-      it 'should not be compatible' do
-        expect(brain.compatible_with_next('ぽん', 'w')).to be_falsey
-      end
-    end
-  end
 end
