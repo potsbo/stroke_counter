@@ -3,7 +3,7 @@ module StrokeCounter
     class Logger
       attr_reader :logs
 
-      def initialize(_ = {})
+      def initialize
         @logs = []
       end
 
