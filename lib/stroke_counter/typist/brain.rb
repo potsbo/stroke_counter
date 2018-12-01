@@ -2,16 +2,15 @@ module StrokeCounter
   class Typist
     class Brain
       attr_reader :mode
-      CONF = {
+      ROMAJI_TABLES = {
         anpan:  'anpan.yaml',
         google: 'google_japanese_input.yaml',
-        normal: 'google_japanese_input.yaml',
       }.freeze
 
       def initialize(mode: :normal)
-        @mode = CONF.key?(mode) ? mode : :normal
+        @mode = mode
 
-        conf = CONF[@mode]
+        conf = ROMAJI_TABLES[@mode] || ROMAJI_TABLES[:google]
 
         @table = Anpan.new(conf).table
         @table.each do |pat|
@@ -28,6 +27,8 @@ module StrokeCounter
         end
         keys.join
       end
+
+      private
 
       def compatible_patterns(input: '', patterns: @table)
         patterns.select { |pattern| input.start_with?(pattern[:output].to_s) && pattern[:output].present? }
