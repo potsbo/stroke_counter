@@ -8,9 +8,9 @@ module StrokeCounter
       }.freeze
 
       def initialize(mode: :normal)
-        @mode = ROMAJI_TABLES.keys.include?(mode) ? mode : :normal
+        @mode = mode
 
-        conf = ROMAJI_TABLES[@mode]
+        conf = ROMAJI_TABLES[@mode] || ROMAJI_TABLES[:google]
 
         @table = Anpan.new(conf).table
         @table.each do |pat|
