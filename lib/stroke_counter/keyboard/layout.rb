@@ -36,6 +36,10 @@ module StrokeCounter
         @rows.flatten
       end
 
+      def key?(key)
+        keys.include? key
+      end
+
       def key_on(key)
         key = key.to_sym
         return :left if left_side_keys.include? key
