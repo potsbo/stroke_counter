@@ -19,7 +19,7 @@ module StrokeCounter
 
     def self.all
       Keyboard::Layout::PRESETS.keys.map do |k|
-        Brain::CONF.keys.reject { |c| c == :normal }.map do |b|
+        Brain::ROMAJI_TABLES.keys.reject { |c| c == :normal }.map do |b|
           Typist.new(keyboard: k, brain: b)
         end
       end.flatten

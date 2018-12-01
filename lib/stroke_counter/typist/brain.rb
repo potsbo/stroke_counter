@@ -2,16 +2,16 @@ module StrokeCounter
   class Typist
     class Brain
       attr_reader :mode
-      CONF = {
+      ROMAJI_TABLES = {
         anpan:  'anpan.yaml',
         google: 'google_japanese_input.yaml',
         normal: 'google_japanese_input.yaml',
       }.freeze
 
       def initialize(mode: :normal)
-        @mode = CONF.keys.include?(mode) ? mode : :normal
+        @mode = ROMAJI_TABLES.keys.include?(mode) ? mode : :normal
 
-        conf = CONF[@mode]
+        conf = ROMAJI_TABLES[@mode]
 
         @table = Anpan.new(conf).table
         @table.each do |pat|
