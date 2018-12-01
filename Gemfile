@@ -7,3 +7,4 @@ gem 'anpan', github: 'potsbo/anpan'
 gem 'natto'
 gem 'rubocop', require: false
 gem 'codecov', require: false, group: :test
+gem 'rubocop', require: false

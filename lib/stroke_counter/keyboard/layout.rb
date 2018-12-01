@@ -36,10 +36,15 @@ module StrokeCounter
         @rows.flatten
       end
 
+      def key?(key)
+        keys.include? key
+      end
+
       def key_on(key)
         key = key.to_sym
         return :left if left_side_keys.include? key
         return :right if right_side_keys.include? key
+
         nil
       end
 
@@ -57,6 +62,7 @@ module StrokeCounter
 
       def finger_by_index(index)
         return if index.nil?
+
         index = 9 - index if index > 4
         %i(little ring middle index index)[index]
       end
@@ -67,6 +73,7 @@ module StrokeCounter
 
       def row_by_row_index(index)
         return :other if index.nil?
+
         %i(upper middle lower)[index]
       end
 
