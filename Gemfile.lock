@@ -21,7 +21,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     ast (2.4.0)
-    codecov (0.1.13)
+    codecov (0.1.14)
       json
       simplecov
       url
