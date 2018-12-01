@@ -1,6 +1,8 @@
 AllCops:
-  TargetRubyVersion: 2.3
-TrailingCommaInLiteral:
+  TargetRubyVersion: 2.5
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 FrozenStringLiteralComment:
   Enabled: false
@@ -18,3 +20,5 @@ Metrics/BlockLength:
 PercentLiteralDelimiters:
   PreferredDelimiters:
     '%i': '()'
+Layout/AlignHash:
+  EnforcedColonStyle: table

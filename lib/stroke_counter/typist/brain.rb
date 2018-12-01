@@ -9,7 +9,7 @@ module StrokeCounter
       }.freeze
 
       def initialize(mode: :normal)
-        @mode = CONF.keys.include?(mode) ? mode : :normal
+        @mode = CONF.key?(mode) ? mode : :normal
 
         conf = CONF[@mode]
 
@@ -69,6 +69,7 @@ module StrokeCounter
 
       def compatible_with_next(input, addition)
         return true if input.empty?
+
         compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s }
       end
     end

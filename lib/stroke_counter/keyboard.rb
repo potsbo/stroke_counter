@@ -20,7 +20,7 @@ module StrokeCounter
       when :right
         @layout.right_side_keys.include?(key.to_sym)
       when nil
-        @layout.keys.include?(key.to_sym)
+        @layout.key?(key.to_sym)
       else
         false
       end
