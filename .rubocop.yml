@@ -20,3 +20,5 @@ Metrics/BlockLength:
 PercentLiteralDelimiters:
   PreferredDelimiters:
     '%i': '()'
+Layout/AlignHash:
+  EnforcedColonStyle: table
