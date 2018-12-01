@@ -18,7 +18,7 @@ task :assess do
     end
   end.flatten
 
-  puts "Typists loaded"
+  puts 'Typists loaded'
   puts "#{layouts.size} layouts found: #{layouts}"
   puts "#{languages.size} languages found: #{languages}"
   puts "#{tables.size} tables found: #{tables}"
@@ -29,7 +29,7 @@ task :assess do
   cnt = 0
   results = []
   languages.each do |lang|
-    puts "#{lang}"
+    puts "Assessment: #{lang}"
     layouts.each do |k|
       tables.each do |t|
         cnt += 1
@@ -44,5 +44,5 @@ task :assess do
   File.open('result.json', 'w') do |f|
     f.write(JSON.pretty_generate(output))
   end
-  puts "result has been written to result.json"
+  puts 'result has been written to result.json'
 end
