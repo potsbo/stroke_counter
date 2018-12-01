@@ -45,6 +45,7 @@ module StrokeCounter
 
       def finger_frequency(hand: nil)
         return finger_frequency_summary unless hand
+
         counts = { index: 0, middle: 0, ring: 0, little: 0 }
         hand_strokes(hand).each do |stroke|
           finger = stroke[:finger]

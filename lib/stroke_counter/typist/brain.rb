@@ -69,6 +69,7 @@ module StrokeCounter
 
       def compatible_with_next(input, addition)
         return true if input.empty?
+
         compatible_patterns(input: input).find { |pat| pat[:input].to_s.start_with? addition.to_s }
       end
     end
