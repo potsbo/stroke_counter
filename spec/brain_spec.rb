@@ -155,5 +155,20 @@ describe StrokeCounter::Typist::Brain do
         end
       end
     end
+
+    describe 'normal sentence' do
+      test_cases = {
+        'kyouhametyakutyaiitenkittekanzidesune.' => 'きょうはめちゃくちゃいいてんきってかんじですね。',
+        'nipponkokukenpou' => 'にっぽんこくけんぽう',
+      }
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
+          end
+        end
+      end
+    end
   end
 end
