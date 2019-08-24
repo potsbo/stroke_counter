@@ -34,7 +34,7 @@ module StrokeCounter
         pattern = @table
           .select { |p| input.start_with? p[:input] }
           .max_by { |p| p[:input].size }
-        return pattern[:output] + from_keys(input.delete_prefix(pattern[:input])) if pattern
+        return pattern[:output] + from_keys(pattern[:addition] + input.delete_prefix(pattern[:input])) if pattern
 
         input[0] + from_keys(input[1..-1])
       end
