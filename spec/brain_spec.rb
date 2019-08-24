@@ -136,5 +136,24 @@ describe StrokeCounter::Typist::Brain do
         end
       end
     end
+
+    describe 'contracted sounds' do
+      test_cases = {
+        'kyakyukyo' => 'きゃきゅきょ',
+        'kyakikyukyekyo' => 'きゃききゅきぇきょ',
+        'syasyusyo' => 'しゃしゅしょ',
+        'syasisyusyesyo' => 'しゃししゅしぇしょ',
+        'tyatyutyo' => 'ちゃちゅちょ',
+        'tyatityutyetyo' => 'ちゃちちゅちぇちょ',
+      }
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
+          end
+        end
+      end
+    end
   end
 end
