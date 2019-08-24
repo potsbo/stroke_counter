@@ -109,4 +109,111 @@ describe StrokeCounter::Typist::Brain do
       end
     end
   end
+
+  describe '#from_keys' do
+    let(:output) { brain.from_keys(input) }
+    let(:input) { '' }
+
+    describe 'one to one patterns' do
+      test_cases = {
+        'aiueo' => 'あいうえお',
+        'kakikukeko' => 'かきくけこ',
+        'sasisuseso' => 'さしすせそ',
+        'tatituteto' => 'たちつてと',
+        'naninuneno' => 'なにぬねの',
+        'hahihuheho' => 'はひふへほ',
+        'mamimumemo' => 'まみむめも',
+        'yayuyo' => 'やゆよ',
+        'rarirurero' => 'らりるれろ',
+        'wawon' => 'わをん',
+      }
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
+          end
+        end
+      end
+    end
+
+    describe 'contracted sounds' do
+      test_cases = {
+        'kyakyukyo' => 'きゃきゅきょ',
+        'kyakikyukyekyo' => 'きゃききゅきぇきょ',
+        'syasyusyo' => 'しゃしゅしょ',
+        'syasisyusyesyo' => 'しゃししゅしぇしょ',
+        'tyatyutyo' => 'ちゃちゅちょ',
+        'tyatityutyetyo' => 'ちゃちちゅちぇちょ',
+      }
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
+          end
+        end
+      end
+    end
+
+    describe 'normal sentence' do
+      test_cases = {
+        'kyouhametyakutyaiitenkittekanzidesune.' => 'きょうはめちゃくちゃいいてんきってかんじですね。',
+        'nipponkokukenpou' => 'にっぽんこくけんぽう',
+      }
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
+          end
+        end
+      end
+    end
+
+    context 'when mode is dvorak' do
+      let(:mode) { :anpan }
+      describe 'one to one patterns' do
+        test_cases = {
+          '\'ueo' => 'あいうえお',
+          'cacicuceco' => 'かきくけこ',
+          'sasisuseso' => 'さしすせそ',
+          'tatituteto' => 'たちつてと',
+          'naninuneno' => 'なにぬねの',
+          'hahihuheho' => 'はひふへほ',
+          'mamimumemo' => 'まみむめも',
+          'fafufo' => 'やゆよ',
+          'rarirurero' => 'らりるれろ',
+          'wawq' => 'わをん',
+          ';v;' => 'あんぱん',
+        }
+        test_cases.each do |en, jp|
+          context "when '#{en}' given" do
+            let(:input) { en }
+            it "should return #{jp}" do
+              expect(output).to eq jp
+            end
+          end
+        end
+      end
+
+      describe 'normal sentence' do
+        test_cases = {
+          'cn,hametnacutnaytjcittec;zidesunel.' => 'きょうはめちゃくちゃいいてんきってかんじですね。',
+          'gatturic.shocuhxd\'c,hn,hatub\'tnpl.' => 'がっつりけいしょくひんだいこうひょうはつばいちゅう。',
+          'axshutaxhacamireberunobuturigacusha' => 'あいんしゅたいんはかみれべるのぶつりがくしゃ',
+          'cyh;t,ttedoconiarunol.' => 'きいはんとうってどこにあるの。',
+          'bubkbkspbkc\'ttesitteruc\'' => 'ぶぶんぶんすうぶんかいってしってるかい',
+        }
+        test_cases.each do |en, jp|
+          context "when '#{en}' given" do
+            let(:input) { en }
+            it "should return #{jp}" do
+              expect(output).to eq jp
+            end
+          end
+        end
+      end
+    end
+  end
 end

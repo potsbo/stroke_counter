@@ -28,6 +28,17 @@ module StrokeCounter
         keys.join
       end
 
+      def from_keys(input)
+        return '' if input.empty?
+
+        pattern = @table
+          .select { |p| input.start_with? p[:input] }
+          .max_by { |p| p[:input].size }
+        return pattern[:output] + from_keys(pattern[:addition] + input.delete_prefix(pattern[:input])) if pattern
+
+        input[0] + from_keys(input[1..-1])
+      end
+
       private
 
       def compatible_patterns(input: '', patterns: @table)
