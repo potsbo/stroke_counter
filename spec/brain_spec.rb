@@ -109,4 +109,32 @@ describe StrokeCounter::Typist::Brain do
       end
     end
   end
+
+  describe '#from_keys' do
+    let(:output) { brain.from_keys(input) }
+    let(:input) { '' }
+
+    describe 'one to one patterns' do
+      test_cases = {
+        'aiueo' => 'あいうえお',
+        'kakikukeko' => 'かきくけこ',
+        'sasisuseso' => 'さしすせそ',
+        'tatituteto' => 'たちつてと',
+        'naninuneno' => 'なにぬねの',
+        'hahihuheho' => 'はひふへほ',
+        'mamimumemo' => 'まみむめも',
+        'yayuyo' => 'やゆよ',
+        'rarirurero' => 'らりるれろ',
+        'wawon' => 'わをん',
+      }
+      test_cases.each do |jp, en|
+        context "when '#{jp}' given" do
+          let(:input) { jp }
+          it "should return #{en}" do
+            expect(output).to eq en
+          end
+        end
+      end
+    end
+  end
 end
