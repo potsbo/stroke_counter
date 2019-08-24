@@ -170,5 +170,50 @@ describe StrokeCounter::Typist::Brain do
         end
       end
     end
+
+    context 'when mode is dvorak' do
+      let(:mode) { :anpan }
+      describe 'one to one patterns' do
+        test_cases = {
+          '\'ueo' => 'あいうえお',
+          'cacicuceco' => 'かきくけこ',
+          'sasisuseso' => 'さしすせそ',
+          'tatituteto' => 'たちつてと',
+          'naninuneno' => 'なにぬねの',
+          'hahihuheho' => 'はひふへほ',
+          'mamimumemo' => 'まみむめも',
+          'fafufo' => 'やゆよ',
+          'rarirurero' => 'らりるれろ',
+          'wawq' => 'わをん',
+          ';v;' => 'あんぱん',
+        }
+        test_cases.each do |jp, en|
+          context "when '#{jp}' given" do
+            let(:input) { jp }
+            it "should return #{en}" do
+              expect(output).to eq en
+            end
+          end
+        end
+      end
+
+      describe 'normal sentence' do
+        test_cases = {
+          'cn,hametnacutnaytjcittec;zidesunel.' => 'きょうはめちゃくちゃいいてんきってかんじですね。',
+          'gatturic.shocuhxd\'c,hn,hatub\'tnpl.' => 'がっつりけいしょくひんだいこうひょうはつばいちゅう。',
+          'axshutaxhacamireberunobuturigacusha' => 'あいんしゅたいんはかみれべるのぶつりがくしゃ',
+          'cyh;t,ttedoconiarunol.' => 'きいはんとうってどこにあるの。',
+          'bubkbkspbkc\'ttesitteruc\'' => 'ぶぶんぶんすうぶんかいってしってるかい',
+        }
+        test_cases.each do |jp, en|
+          context "when '#{jp}' given" do
+            let(:input) { jp }
+            it "should return #{en}" do
+              expect(output).to eq en
+            end
+          end
+        end
+      end
+    end
   end
 end
