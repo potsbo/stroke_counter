@@ -127,11 +127,11 @@ describe StrokeCounter::Typist::Brain do
         'rarirurero' => 'らりるれろ',
         'wawon' => 'わをん',
       }
-      test_cases.each do |jp, en|
-        context "when '#{jp}' given" do
-          let(:input) { jp }
-          it "should return #{en}" do
-            expect(output).to eq en
+      test_cases.each do |en, jp|
+        context "when '#{en}' given" do
+          let(:input) { en }
+          it "should return #{jp}" do
+            expect(output).to eq jp
           end
         end
       end
@@ -187,11 +187,11 @@ describe StrokeCounter::Typist::Brain do
           'wawq' => 'わをん',
           ';v;' => 'あんぱん',
         }
-        test_cases.each do |jp, en|
-          context "when '#{jp}' given" do
-            let(:input) { jp }
-            it "should return #{en}" do
-              expect(output).to eq en
+        test_cases.each do |en, jp|
+          context "when '#{en}' given" do
+            let(:input) { en }
+            it "should return #{jp}" do
+              expect(output).to eq jp
             end
           end
         end
@@ -205,11 +205,11 @@ describe StrokeCounter::Typist::Brain do
           'cyh;t,ttedoconiarunol.' => 'きいはんとうってどこにあるの。',
           'bubkbkspbkc\'ttesitteruc\'' => 'ぶぶんぶんすうぶんかいってしってるかい',
         }
-        test_cases.each do |jp, en|
-          context "when '#{jp}' given" do
-            let(:input) { jp }
-            it "should return #{en}" do
-              expect(output).to eq en
+        test_cases.each do |en, jp|
+          context "when '#{en}' given" do
+            let(:input) { en }
+            it "should return #{jp}" do
+              expect(output).to eq jp
             end
           end
         end
